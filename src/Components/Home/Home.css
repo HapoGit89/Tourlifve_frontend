@@ -4,6 +4,8 @@
     align-items: center;
     margin: 40vh;
     color: whitesmoke;
+    display:flex;
+    flex-direction: column;
 
 
 }

@@ -18,7 +18,7 @@ function MyNavBar({user, logOut}) {
         </NavLink>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink to="/companies">Tours</NavLink>
+            <NavLink to="/tours">Tours</NavLink>
           </NavItem>
           <NavItem>
             <NavLink to={`user/${user.username}`}>Profile</NavLink>

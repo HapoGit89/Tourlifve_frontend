@@ -10,9 +10,9 @@ function Home (){
     if (user && user.token){
     return (
     <div className="WelcomeMessage"> 
-         <h1>Welcome {user.username}, this is Tourlifve, an App which helps you find, save and organise Activities for when on tour. 
-         Click Tours to start exploring!
+         <h1>Welcome {user.username}, this is Tourlifve 🚌 
          </h1>
+         <h2>Click TOURS to start!</h2>
     </div>
     )}
 

@@ -44,7 +44,7 @@ function SignUpForm ({logIn}){
     if(!user.token){
     return(
       <div className="SignUpForm">
-        <h1>Sign Up For Jobly:</h1>
+        <h1>Sign Up For Tourlifve:</h1>
         <Form  onSubmit={handleSubmit}>
            <FormGroup>
     <Label for="userName">

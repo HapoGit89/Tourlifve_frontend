@@ -1,0 +1,17 @@
+.LogInForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top:20vh;
+    margin-left: 40vh;
+    width: 80vh;
+    border-style: solid;
+    border-radius: 2%;
+    padding: 5%;
+    color: white;
+
+
+   
+   
+
+}

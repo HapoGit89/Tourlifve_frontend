@@ -4,6 +4,8 @@ import {React, useState, useEffect} from "react"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import SignUpForm from './Components/SignUpForm/SignUpForm'
+import LoginForm from './Components/LoginForm/LoginForm';
+import TourList from './Components/TourList/TourList';
 import { TourApi } from './api';
 import userContext from './userContext';
 import MyNavBar from './Components/NavBar/MyNavBar';
@@ -33,7 +35,7 @@ function App() {
   // gets userdata for given username and stores it in State
   const getUser = async(username)=>{
     const res = await TourApi.getUser(username)
-    setUser({...res.user, token: TourApi.token})   
+    setUser({...res, token: TourApi.token})   
   }
 
 
@@ -78,6 +80,12 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/signup" element={<SignUpForm logIn={logIn}/>}></Route>    
+        </Routes>
+        <Routes>
+          <Route exact path="/login" element={<LoginForm logIn={logIn}/>}></Route>    
+        </Routes>
+        <Routes>
+          <Route exact path="/tours" element={<TourList/>}></Route>    
         </Routes>
        
         </BrowserRouter>
