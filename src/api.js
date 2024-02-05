@@ -7,7 +7,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
  * Static class providing API functionality.
  */
 
-export class JoblyApi {
+export class TourApi {
   // store user token for API access
   static token;
 
@@ -17,7 +17,7 @@ export class JoblyApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${JoblyApi.token}` };
+    const headers = { Authorization: `Bearer ${TourApi.token}` };
     const params = (method === "get")
         ? data
         : {};
