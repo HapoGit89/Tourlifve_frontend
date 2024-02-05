@@ -3,6 +3,7 @@ import './App.css';
 import {React, useState, useEffect} from "react"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Components/Home/Home';
+import SignUpForm from './Components/SignUpForm/SignUpForm'
 import { TourApi } from './api';
 import userContext from './userContext';
 import MyNavBar from './Components/NavBar/MyNavBar';
@@ -36,13 +37,13 @@ function App() {
   }
 
 
-  // // User Login leads to localStorage Update, Api Token Update and State Update
-  // const logIn = (data)=>{
-  //   localStorage.setItem("username", data.username)
-  //   localStorage.setItem("token", data.token)
-  //   JoblyApi.token = data.token
-  //   getUser(data.username)
-  // }
+  // User Login leads to localStorage Update, Api Token Update and State Update
+  const logIn = (data)=>{
+    localStorage.setItem("username", data.username)
+    localStorage.setItem("token", data.token)
+    TourApi.token = data.token
+    getUser(data.username)
+  }
 
   // clear localStorage when Logout and clear Api Token
   const logOut = ()=>{
@@ -74,6 +75,9 @@ function App() {
         <MyNavBar user={user} logOut={logOut}/>
         <Routes>
           <Route exact path="/" element={<Home/>}></Route>    
+        </Routes>
+        <Routes>
+          <Route exact path="/signup" element={<SignUpForm logIn={logIn}/>}></Route>    
         </Routes>
        
         </BrowserRouter>

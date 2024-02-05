@@ -17,7 +17,7 @@ export class TourApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${TourApi.token}` };
+    const headers = { Authorization: `Bearer ${TourApi.token}` ,  'Access-Control-Allow-Origin': '*',};
     const params = (method === "get")
         ? data
         : {};
@@ -40,6 +40,7 @@ export class TourApi {
       return res
       }
     catch(e){
+      console.log("ERRRROROROROR")
       return (e)
     }
   }
