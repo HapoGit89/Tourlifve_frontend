@@ -40,7 +40,6 @@ export class TourApi {
       return res
       }
     catch(e){
-      console.log("ERRRROROROROR")
       return (e)
     }
   }
@@ -83,9 +82,9 @@ static async patchUser(username,data){
   }
 }
 
-static async ApplyForJob(username,jobId){
+static async postTour(data){
   try{
-    let res = await this.request(`users/${username}/jobs/${jobId}`,{},"post")
+    let res = await this.request(`tours/`,{...data},"post")
     return res
   }
   catch(e){

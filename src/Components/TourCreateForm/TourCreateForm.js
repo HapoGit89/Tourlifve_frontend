@@ -9,11 +9,22 @@ import userContext from "../../userContext";
 function TourCreateForm (){
   // React controlled Form for User Login
   const [formData, setFormData] = useState("")
-  const navigate = useNavigate()
   const user = useContext(userContext)
+  const navigate=useNavigate()
 
   const createTour = async()=>{
-    console.log("Hello")
+    const data = formData
+    data.user_id= user.id
+    const res = await TourApi.postTour(data)
+    if(res.tour){
+      alert(`Created New Tour ${res.tour.title} with artist ${res.tour.artist}`)
+      navigate("../../tours")
+      window.location.reload()
+    }
+    else{
+      console.log(res)
+      alert(`${res}`)
+    }
   }
 
 
@@ -42,10 +53,10 @@ function TourCreateForm (){
     </Label>
     <Input
       id="artist"
-      name="artistname"
+      name="artist"
       placeholder="Artist name..."
       type="text"
-      value={formData.artistname || ""}
+      value={formData.artist || ""}
       onChange={handleChange}
     />
   </FormGroup>

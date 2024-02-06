@@ -1,4 +1,4 @@
-import {React, useContext} from "react"
+import {React, useContext, useEffect} from "react"
 import "./TourList.css"
 import userContext from "../../userContext"
 import TourCard from "../TourCard/TourCard"
@@ -6,10 +6,9 @@ import { Button } from "reactstrap"
 import { useNavigate } from "react-router-dom"
 
 
-function TourList(){
+function TourList({getUser}){
   const user = useContext(userContext)
   const navigate = useNavigate()
-
 
     if (user.token){  //Route protection
     return(

@@ -86,7 +86,7 @@ function App() {
           <Route exact path="/login" element={<LoginForm logIn={logIn}/>}></Route>    
         </Routes>
         <Routes>
-          <Route exact path="/tours" element={<TourList/>}></Route>    
+          <Route exact path="/tours" element={<TourList getUser={getUser}/>}></Route>    
         </Routes>
         <Routes>
           <Route exact path="/tours/new" element={<TourCreateForm/>}></Route>    
