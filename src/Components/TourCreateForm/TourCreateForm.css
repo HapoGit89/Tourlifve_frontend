@@ -1,8 +1,8 @@
-.SignUpForm{
+.TourCreateForm{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top:20vh;
+    margin-top:10vh;
     margin-left: 60vh;
     width: 80vh;
     border-style: solid;

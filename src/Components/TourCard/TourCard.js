@@ -16,7 +16,8 @@ function TourCard ({tour}){
         color="dark"
         inverse
         style={{
-          width: '18rem'
+          width: '18rem',
+          height:'18rem'
         }}
       >
         <CardBody>
@@ -24,7 +25,7 @@ function TourCard ({tour}){
             {tour.title}
           </CardTitle>
           <CardText>
-            <h3>Artist: {tour.artist}</h3>
+            <h4>Artist: {tour.artist}</h4>
             <p>Start: {start}</p>
             <p>End: {end}</p>
           </CardText>

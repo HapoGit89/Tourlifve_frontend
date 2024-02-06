@@ -6,6 +6,7 @@ import Home from './Components/Home/Home';
 import SignUpForm from './Components/SignUpForm/SignUpForm'
 import LoginForm from './Components/LoginForm/LoginForm';
 import TourList from './Components/TourList/TourList';
+import TourCreateForm from './Components/TourCreateForm/TourCreateForm';
 import { TourApi } from './api';
 import userContext from './userContext';
 import MyNavBar from './Components/NavBar/MyNavBar';
@@ -86,6 +87,9 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/tours" element={<TourList/>}></Route>    
+        </Routes>
+        <Routes>
+          <Route exact path="/tours/new" element={<TourCreateForm/>}></Route>    
         </Routes>
        
         </BrowserRouter>

@@ -3,11 +3,18 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin: 5%;
+    margin-left: 5%;
+    margin-right:5%;
     flex-wrap:wrap;
 }
 
 .TourCard {
  margin: 2%;
 
+}
+
+
+.AddTourButton{
+    margin-top: 3%;
+ 
 }
