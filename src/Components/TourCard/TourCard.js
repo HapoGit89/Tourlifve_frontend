@@ -1,12 +1,15 @@
 import { Card,CardBody, CardHeader,CardTitle,CardSubtitle, CardText,Button } from "reactstrap";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const unix = require("unix-timestamp")
+
 
 
 function TourCard ({tour}){
   // user reactstrap Card component to render tour data
   const end = tour.enddate.slice(0,10)
   const start = tour.startdate.slice(0,10)
+  const navigate = useNavigate()
   
 
   
@@ -29,7 +32,7 @@ function TourCard ({tour}){
             <p>Start: {start}</p>
             <p>End: {end}</p>
           </CardText>
-          <Button>
+          <Button onClick={()=>navigate(`./${tour.id}`)}>
        Details
     </Button>
         </CardBody>

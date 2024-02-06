@@ -7,6 +7,7 @@ import SignUpForm from './Components/SignUpForm/SignUpForm'
 import LoginForm from './Components/LoginForm/LoginForm';
 import TourList from './Components/TourList/TourList';
 import TourCreateForm from './Components/TourCreateForm/TourCreateForm';
+import TourDetails from './Components/TourDetails/TourDetails';
 import { TourApi } from './api';
 import userContext from './userContext';
 import MyNavBar from './Components/NavBar/MyNavBar';
@@ -90,6 +91,9 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path="/tours/new" element={<TourCreateForm/>}></Route>    
+        </Routes>
+        <Routes>
+          <Route exact path="/tours/:id" element={<TourDetails/>}></Route>    
         </Routes>
        
         </BrowserRouter>
