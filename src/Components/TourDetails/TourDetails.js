@@ -5,6 +5,7 @@ import { Card, CardBody,CardText, CardTitle, CardHeader, Button} from "reactstra
 
 import "./TourDetails.css"
 import userContext from "../../userContext"
+import TourstopList from "../TourstopsList/TourstopsList"
 
 
 function TourDetails(){
@@ -12,7 +13,7 @@ function TourDetails(){
     const {id} = useParams()
     const [data, setData] = useState(null)
     const user = useContext(userContext)
-    const tour_user_check = user.tours.filter((el)=>el.id==id)   // checks if tour is owned by user
+    // checks if tour is owned by user
 
     // get company info for given handle via JoblyApi and update State
     useEffect(()=>{
@@ -21,9 +22,10 @@ function TourDetails(){
             setData(res.tour)
             }
             getTourData()
-    }, [])
+    },[data])
 
-    if(data && user.token && tour_user_check.length > 0){  //conditional render protects route 
+
+    if(data && user.token && data.user_id == user.id){  //conditional render protects route 
       return (
         <div className="TourDetails"> 
            <Card
@@ -31,17 +33,19 @@ function TourDetails(){
     color="dark"
     inverse
     style={{
-      width: '100rem'
+      width: '40rem',
+      height: '40rem',
+      justifyContent: "center",
+      padding: "6%"
     }}
   >
-    <CardHeader>
-      Tour Details
-    </CardHeader>
+  
     <CardBody>
       <CardTitle tag="h2">
-        Title: {data.title}
+        Tour Details:
       </CardTitle>
       <CardText>
+        <h3>Title: {data.title}</h3>
         <h3>Artist: {data.artist}</h3>
         <p>Start: {data.startdate.slice(0,10)}</p>
         <p>End: {data.enddate.slice(0,10)}</p>
@@ -49,6 +53,8 @@ function TourDetails(){
       <Button>Edit Tour</Button>
     </CardBody>
   </Card>
+
+  <TourstopList tourstops={data.tourstops}></TourstopList>
 
         </div>
       )}
