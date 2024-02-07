@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState, useContext} from "react"
 import { TourApi } from "../../api"
+import ActivityList from "../ActivityList/ActivityList"
 import { Card, CardBody,CardText, CardTitle, CardHeader, Button} from "reactstrap"
 import "./TourstopDetails.css"
 import userContext from "../../userContext"
@@ -51,6 +52,9 @@ function TourstopDetails(){
       <Button>Edit Tourstop</Button>
     </CardBody>
   </Card>
+
+   <ActivityList activities={data.activities}></ActivityList>
+  
 
         </div>
       )}
