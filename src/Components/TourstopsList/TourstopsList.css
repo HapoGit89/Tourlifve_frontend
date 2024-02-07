@@ -1,8 +1,10 @@
 .TourstopsList {
-    margin: 4%
+    margin: 4%;
+    color: whitesmoke
 }
 
 .Tourstopsheading{
-    color:whitesmoke;
+   
     margin: 2%
 }
+

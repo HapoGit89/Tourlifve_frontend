@@ -10,6 +10,27 @@ function TourList({getUser}){
   const user = useContext(userContext)
   const navigate = useNavigate()
 
+  if(user.token && user.tours.length == 0){
+    return (
+
+      <div className="TourListPage">
+            
+      <Button className="AddTourButton"
+        color="secondary"
+        onClick={()=>navigate("./new")}
+      >
+        Create NEW ...
+      </Button>
+
+        <div className="EmptyTourList">
+          
+         <h1>No Tours yet, add some!</h1>
+        </div>
+        </div>
+
+    )
+  }
+
     if (user.token){  //Route protection
     return(
       <div className="TourListPage">

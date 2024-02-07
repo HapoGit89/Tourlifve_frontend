@@ -102,6 +102,16 @@ static async getTourDetails(id){
   }
 }
 
+static async getTourstopDetails(id){
+  try{
+    let res = await this.request(`tourstops/${id}`,{},"get")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
 }
 
 // for now, put token ("testuser" / "password" on class)

@@ -9,6 +9,7 @@ const unix = require("unix-timestamp")
 function TourStopCard ({tourstop}){
   // user reactstrap Card component to render tour data
   const date = tourstop.date.slice(0,10)
+  const navigate = useNavigate()
 
   
 
@@ -25,7 +26,7 @@ function TourStopCard ({tourstop}){
   }}>
 <CardBody>
       <CardText>
-        <p>{`${date} - ${tourstop.city} - ${tourstop.name}`} <Button style={{marginLeft: "5%"}}>Details</Button></p>
+        <p>{`${date} - ${tourstop.city} - ${tourstop.name}`} <Button style={{marginLeft: "5%"}} onClick={()=>navigate(`../tourstops/${tourstop.id}`)}>Details</Button></p>
       </CardText>
     </CardBody>
   </Card>
