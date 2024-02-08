@@ -22,7 +22,7 @@ function TourstopDetails(){
             setData(res.tourstop)
             }
             getTourstopData()
-    },[data])
+    },[user])
 
 
     if(data && user.token && user.tours.filter((el)=>el.id == data.tour_id).length > 0){  //conditional render protects route 
@@ -33,10 +33,10 @@ function TourstopDetails(){
     color="dark"
     inverse
     style={{
-      width: '40rem',
-      height: '40rem',
+      width: '100rem',
+      height: '20rem',
       justifyContent: "center",
-      padding: "6%"
+      padding: "4%",
     }}
   >
   
@@ -49,9 +49,10 @@ function TourstopDetails(){
         <h3>City: {data.city}</h3>
         <p>Date: {data.date.slice(0,10)}</p>
       </CardText>
-      <Button>Edit Tourstop</Button>
+      <Button size="lg">Edit Tourstop</Button>
     </CardBody>
   </Card>
+
 
    <ActivityList activities={data.activities}></ActivityList>
   

@@ -1,0 +1,5 @@
+.TourDetails {
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke
+}

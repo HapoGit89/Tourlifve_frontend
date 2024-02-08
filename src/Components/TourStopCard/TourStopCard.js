@@ -18,8 +18,8 @@ function TourStopCard ({tourstop}){
   <div className="TourStopCard">
 <Card
   className="my-2"
-  color="dark"
-  inverse
+  color="light"
+ 
   style={{
     width: '40rem',
     height:'4rem'

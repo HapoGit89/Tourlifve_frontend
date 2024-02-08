@@ -22,13 +22,15 @@ function ActivityCard ({activity}){
   inverse
   style={{
     width: '40rem',
-    height:'10rem'
+    height:'15rem',
+    padding: "5%"
   }}>
 <CardBody>
       <CardText>
-        <h3>Name: {activity.name}</h3>
-        <h3>Category: {activity.category}</h3>
-        <h3>Adress: {activity.adress}</h3>
+        <h3>{activity.name}</h3>
+        <h4>Category: {activity.category}</h4>
+        <h4>Address: {activity.address}</h4>
+        <h4>Distance: {Math.floor(activity.traveltime/60)+1} minutes by {activity.travelmode}</h4>
       </CardText>
     </CardBody>
   </Card>

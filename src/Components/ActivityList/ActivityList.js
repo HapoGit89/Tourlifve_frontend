@@ -14,25 +14,31 @@ function ActivityList({activities}){
 
 if(activities.length > 0){
 return (
-    <div className="ActivitiesList">
-        <div className="ActivitiesHeading">
-            <h1>Your Remembered Places:</h1>
+<>
+<div className="ActivitiesHeading">
+            <h1>Your Saved Places:</h1>
             </div>
+    <div className="ActivitiesList">
+        
         {activities.map((el)=><ActivityCard activity={el}></ActivityCard>)}
-        <Button>Add Place</Button>
+        <Button size= "lg">Add Place</Button>
     </div>
+    </>
 )
 
 }
 else {
     return (
-        <div className="TourstopsList">
-            <div className="Tourstopsheading">
-                <h1>Your Saved Places:</h1>
-                </div>
+        <>
+        <div className="Activitiesheading">
+        <h1>Your Saved Places:</h1>
+        </div>
+        <div className="ActivitiesList">
+          
             <h3>No Places yet, add some!</h3>
             <Button>Find And Add Places</Button>
         </div>
+        </>
     )
 }
 }

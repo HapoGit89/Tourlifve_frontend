@@ -2,10 +2,9 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState, useContext} from "react"
 import { TourApi } from "../../api"
 import { Card, CardBody,CardText, CardTitle, CardHeader, Button} from "reactstrap"
-
-import "./TourDetails.css"
 import userContext from "../../userContext"
 import TourstopList from "../TourstopsList/TourstopsList"
+import "./TourDetails.css"
 
 
 function TourDetails(){
@@ -22,41 +21,27 @@ function TourDetails(){
             setData(res.tour)
             }
             getTourData()
-    },[data])
 
+    },[user])
 
-    if(data && user.token && data.user_id == user.id){  //conditional render protects route 
-      return (
-        <div className="TourDetails"> 
-           <Card
-    className="my-2"
-    color="dark"
-    inverse
-    style={{
-      width: '40rem',
-      height: '40rem',
-      justifyContent: "center",
-      padding: "6%"
-    }}
-  >
   
-    <CardBody>
-      <CardTitle tag="h2">
-        Tour Details:
-      </CardTitle>
-      <CardText>
-        <h3>Title: {data.title}</h3>
-        <h3>Artist: {data.artist}</h3>
-        <p>Start: {data.startdate.slice(0,10)}</p>
-        <p>End: {data.enddate.slice(0,10)}</p>
-      </CardText>
-      <Button>Edit Tour</Button>
-    </CardBody>
-  </Card>
 
-  <TourstopList tourstops={data.tourstops}></TourstopList>
 
+    if(data  && user.token && data.user_id == user.id){  //conditional render protects route 
+      return (
+    <div className="TourDetails"> 
+        <div className="Tourinfo">
+            <h1>Tour Details</h1>
+            <h2>Title: {data.title}</h2>
+            <h3>Artist: {data.artist}</h3>
+            <h4>Start: {data.startdate.slice(0,10)}</h4>
+            <h4>Start: {data.enddate.slice(0,10)}</h4>
+          <Button>Edit Tour</Button>
         </div>
+         <div>
+              <TourstopList tourstops={data.tourstops}></TourstopList>
+        </div>
+    </div>
       )}
 
       else if(data && user.token){

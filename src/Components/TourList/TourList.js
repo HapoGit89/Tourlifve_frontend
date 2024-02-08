@@ -18,8 +18,9 @@ function TourList({getUser}){
       <Button className="AddTourButton"
         color="secondary"
         onClick={()=>navigate("./new")}
+        size= "lg"
       >
-        Create NEW ...
+        Create New Tour ...
       </Button>
 
         <div className="EmptyTourList">
@@ -38,8 +39,9 @@ function TourList({getUser}){
       <Button className="AddTourButton"
         color="secondary"
         onClick={()=>navigate("./new")}
+        size = "lg"
       >
-        Create NEW ...
+        Create New Tour ...
       </Button>
 
         <div className="TourList">
