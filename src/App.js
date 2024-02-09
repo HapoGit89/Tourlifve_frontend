@@ -2,6 +2,8 @@
 import './App.css';
 import {React, useState, useEffect} from "react"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import userContext from './userContext';
+import MyNavBar from './Components/NavBar/MyNavBar';
 import Home from './Components/Home/Home';
 import SignUpForm from './Components/SignUpForm/SignUpForm'
 import LoginForm from './Components/LoginForm/LoginForm';
@@ -9,9 +11,9 @@ import TourList from './Components/TourList/TourList';
 import TourCreateForm from './Components/TourCreateForm/TourCreateForm';
 import TourDetails from './Components/TourDetails/TourDetails';
 import TourstopDetails from './Components/TourstopDetails/Tourstopdetails';
+import UserForm from './Components/UserForm/UserForm';
+import TourEditForm from './Components/TourEditForm/TourEditForm';
 import { TourApi } from './api';
-import userContext from './userContext';
-import MyNavBar from './Components/NavBar/MyNavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -19,6 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [user, setUser] = useState({})
+ 
 
 
   // catch userdata and set API Token when App mounts, cleanUp resets Api token
@@ -29,10 +32,8 @@ function App() {
       TourApi.token = token
       getUser(username)
     }
-    return () => {
-      TourApi.token=""
-  }
-  },[])
+  
+  }, [user.token])
 
 
   // gets userdata for given username and stores it in State
@@ -79,28 +80,24 @@ function App() {
    <BrowserRouter>
         <MyNavBar user={user} logOut={logOut}/>
         <Routes>
-          <Route exact path="/" element={<Home/>}></Route>    
-        </Routes>
-        <Routes>
           <Route exact path="/signup" element={<SignUpForm logIn={logIn}/>}></Route>    
-        </Routes>
-        <Routes>
-          <Route exact path="/login" element={<LoginForm logIn={logIn}/>}></Route>    
-        </Routes>
-        <Routes>
-          <Route exact path="/tours" element={<TourList getUser={getUser}/>}></Route>    
-        </Routes>
-        <Routes>
-          <Route exact path="/tours/new" element={<TourCreateForm/>}></Route>    
-        </Routes>
-        <Routes>
-          <Route exact path="/tours/:id" element={<TourDetails/>}></Route>    
-        </Routes>
-        <Routes>
-          <Route exact path="/tourstops/:id" element={<TourstopDetails/>}></Route>    
-        </Routes>
-
        
+          <Route exact path="/login" element={<LoginForm logIn={logIn}/>}></Route>    
+      
+          <Route exact path="/tours" element={<TourList getUser={getUser}/>}></Route>    
+      
+          <Route exact path="/tours/new" element={<TourCreateForm/>}></Route>    
+      
+          <Route exact path="/tours/:id" element={<TourDetails/>}></Route>    
+       
+          <Route exact path="/tourstops/:id" element={<TourstopDetails/>}></Route>    
+        
+          <Route exact path="/users/:username" element={<UserForm getUser = {getUser}/>}></Route>    
+       
+          <Route exact path="/tours/:id/edit" element={<TourEditForm/>}></Route>    
+      
+          <Route exact path="/" element={<Home></Home>}></Route>    
+        </Routes>
         </BrowserRouter>
         </userContext.Provider>
       

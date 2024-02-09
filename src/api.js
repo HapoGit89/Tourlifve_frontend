@@ -9,7 +9,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 export class TourApi {
   // store user token for API access
-  static token;
+  static token = localStorage.getItem("token") || ""
 
 
 // universal request method
@@ -17,7 +17,7 @@ export class TourApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${TourApi.token}` ,  'Access-Control-Allow-Origin': '*',};
+    const headers = { Authorization: `Bearer ${this.token}` ,  'Access-Control-Allow-Origin': '*',};
     const params = (method === "get")
         ? data
         : {};
@@ -105,6 +105,16 @@ static async getTourDetails(id){
 static async getTourstopDetails(id){
   try{
     let res = await this.request(`tourstops/${id}`,{},"get")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
+static async patchTour(id, data){
+  try{
+    let res = await this.request(`tours/${id}`,{...data},"patch")
     return res
   }
   catch(e){

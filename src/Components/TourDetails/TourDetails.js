@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState, useContext} from "react"
 import { TourApi } from "../../api"
 import { Card, CardBody,CardText, CardTitle, CardHeader, Button} from "reactstrap"
@@ -12,6 +12,7 @@ function TourDetails(){
     const {id} = useParams()
     const [data, setData] = useState(null)
     const user = useContext(userContext)
+    const navigate = useNavigate()
     // checks if tour is owned by user
 
     // get company info for given handle via JoblyApi and update State
@@ -24,6 +25,9 @@ function TourDetails(){
 
     },[user])
 
+    const handleClick = ()=>{
+      navigate("./edit")
+    }
   
 
 
@@ -36,7 +40,7 @@ function TourDetails(){
             <h3>Artist: {data.artist}</h3>
             <h4>Start: {data.startdate.slice(0,10)}</h4>
             <h4>Start: {data.enddate.slice(0,10)}</h4>
-          <Button>Edit Tour</Button>
+          <Button size="lg" onClick={handleClick}>Edit Tour</Button>
         </div>
          <div>
               <TourstopList tourstops={data.tourstops}></TourstopList>

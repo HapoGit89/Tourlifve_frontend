@@ -6,7 +6,7 @@ import { Button } from "reactstrap"
 import { useNavigate } from "react-router-dom"
 
 
-function TourList({getUser}){
+function TourList(){
   const user = useContext(userContext)
   const navigate = useNavigate()
 

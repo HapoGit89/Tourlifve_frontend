@@ -21,7 +21,7 @@ function MyNavBar({user, logOut}) {
             <NavLink to="/tours">Tours</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to={`user/${user.username}`}>Profile</NavLink>
+            <NavLink to={`users/${user.username}`}>Profile</NavLink>
           </NavItem>
           <NavItem>
             <NavLink to="/" onClick={logOut} reloadDocument>Log Out</NavLink>

@@ -10,6 +10,11 @@ function TourCard ({tour}){
   const end = tour.enddate.slice(0,10)
   const start = tour.startdate.slice(0,10)
   const navigate = useNavigate()
+
+
+  const handleClick = ()=>{
+    navigate(`./${tour.id}`)
+  }
   
 
   
@@ -32,34 +37,12 @@ function TourCard ({tour}){
             <p>Start: {start}</p>
             <p>End: {end}</p>
           </CardText>
-          <Button onClick={()=>navigate(`./${tour.id}`)}>
+          <Button onClick={handleClick}>
        Details
     </Button>
         </CardBody>
       </Card>
  
-    // <Card
-    //     style={{
-    //       width: '40vh'
-    //     }}
-    //   >
-    //     <CardBody>
-    //       <CardTitle tag="h5">
-    //         <NavLink to={`./${tour.id}`}>{tour.title}</NavLink>
-    //       </CardTitle>
-    //       <CardSubtitle
-    //         className="mb-2 text-muted"
-    //         tag="h6"
-    //       >
-    //         @ {tour.artist}
-    //       </CardSubtitle>
-    //       <ul>
-    //         <li>From: {tour.startdate}</li>
-    //         <li>Through: {tour.enddate}</li>
-    //       </ul>
-      
-    //     </CardBody>
-    //   </Card>
       )
 
 }
