@@ -13,6 +13,7 @@ function TourEditForm (){
   const user = useContext(userContext)
   const navigate=useNavigate()
   const {id} = useParams()
+
  
 
 
@@ -31,11 +32,13 @@ function TourEditForm (){
 },[])
 
   const editTour = async()=>{
-    const data = formData
+    let data = formData
     data.user_id= user.id
-    const res = await TourApi.patchTour(data)
+    // build right schema for PATCH
+    data = {artist: data.artist, title: data.tile, startdate: data.startdate, enddate: data.enddate, user_id: data.user_id}
+    const res = await TourApi.patchTour(id,data)
     if(res.tour){
-      alert(`Created New Tour ${res.tour.title} with artist ${res.tour.artist}`)
+      alert(`Updated Tour ${res.tour.title}`)
       navigate("../../tours")
       window.location.reload()
     }
@@ -105,6 +108,8 @@ function TourEditForm (){
       type="date"
       value={formData.startdate || ""}
       onChange={handleChange}
+
+    
     />
   </FormGroup>
 
@@ -121,6 +126,8 @@ function TourEditForm (){
       type="date"
       value={formData.enddate || ""}
       onChange={handleChange}
+     
+      
     />
   </FormGroup>
 

@@ -29,15 +29,14 @@ function TourCard ({tour}){
         }}
       >
         <CardBody>
-          <CardTitle tag="h2">
-            {tour.title}
-          </CardTitle>
-          <CardText>
+          <CardTitle >
+            <h2>{tour.title}</h2>
             <h4>Artist: {tour.artist}</h4>
-            <p>Start: {start}</p>
-            <p>End: {end}</p>
-          </CardText>
-          <Button onClick={handleClick}>
+            <h5>Start: {start}</h5>
+           <h5>End: {end}</h5> 
+          </CardTitle>
+          <Button onClick={handleClick}
+          style={{margin: "5%"}}>
        Details
     </Button>
         </CardBody>
