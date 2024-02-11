@@ -4,10 +4,10 @@ import { TourApi } from "../../api"
 import { Card, CardBody,CardText, CardTitle, CardHeader, Button} from "reactstrap"
 import userContext from "../../userContext"
 import TourstopList from "../TourstopsList/TourstopsList"
-import "./TourDetails.css"
+import "./TourDelete.css"
 
 
-function TourDetails(){
+function TourDelete(){
   // Shows company details for given tour_id
     const {id} = useParams()
     const [data, setData] = useState(null)
@@ -15,43 +15,59 @@ function TourDetails(){
     const navigate = useNavigate()
     // checks if tour is owned by user
 
-    // get tour info for given handle via JoblyApi and update State
-    useEffect(()=>{
-        const getTourData= async()=>{
-            const res = await TourApi.getTourDetails(id) 
-            setData(res.tour)
-            }
-            getTourData()
 
-    },[user])
+        // get company info for given handle via JoblyApi and update State
+        useEffect(()=>{
+            const getTourData= async()=>{
+                const res = await TourApi.getTourDetails(id) 
+                setData(res.tour)
+                }
+                getTourData()
+    
+        },[user])
+
+    const deleteTour = async () => {
+      
+        const res = await TourApi.deleteTour(id)
+       if(res.deleted){
+        alert(`Deleted Tour ${data.title}`)
+        navigate("./../..")
+        window.location.reload()
+       }
+       else {
+        alert(`${res.error.message}`)
+       }
+     
+
+    }
+   
 
     const handleClick1 = ()=>{
-      navigate("./edit")
+        navigate("./..")
+      
     }
 
     const handleClick2 = ()=>{
-      navigate("./delete")
+        deleteTour()
+
+      
     }
+  
   
 
 
     if(data  && user.token && data.user_id == user.id){  //conditional render protects route 
       return (
-    <div className="TourDetails"> 
+    <div className="TourDeleteCard"> 
         <div className="Tourinfo">
-            <h1>Tour Details</h1>
-            <h2>Title: {data.title}</h2>
-            <h3>Artist: {data.artist}</h3>
-            <h4>Start: {data.startdate.slice(0,10)}</h4>
-            <h4>Start: {data.enddate.slice(0,10)}</h4>
+            <h1>Do your really want to delete tour:</h1>
+            <h1>{data.title} ?</h1>
             <div className="Buttons">
-              <Button size="lg" onClick={handleClick1}>Edit Tour</Button>
-              <Button size="lg" color="danger" onClick={handleClick2}>Delete Tour</Button>
+                <Button size="lg" color="primary" onClick={handleClick1}>No</Button>
+                <Button size="lg" color="danger" onClick={handleClick2}>Yes</Button>
             </div>
         </div>
-         <div>
-              <TourstopList tourstops={data.tourstops}></TourstopList>
-        </div>
+   
     </div>
       )}
 
@@ -74,4 +90,4 @@ function TourDetails(){
   
 }
 
-export default TourDetails
+export default TourDelete

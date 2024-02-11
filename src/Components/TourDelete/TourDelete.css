@@ -1,4 +1,4 @@
-.TourDetails {
+.TourDeleteCard {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -11,10 +11,11 @@
     color: whitesmoke;
     border-style: solid;
     border-radius: 4%;
-    height: 40rem;
+    height: 30rem;
     width:35rem;
     padding: 3rem;
 }
+
 
 
 .Buttons {

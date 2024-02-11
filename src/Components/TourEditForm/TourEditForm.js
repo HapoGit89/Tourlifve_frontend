@@ -35,7 +35,7 @@ function TourEditForm (){
     let data = formData
     data.user_id= user.id
     // build right schema for PATCH
-    data = {artist: data.artist, title: data.tile, startdate: data.startdate, enddate: data.enddate, user_id: data.user_id}
+    data = {artist: data.artist, title: data.title, startdate: data.startdate, enddate: data.enddate, user_id: data.user_id}
     const res = await TourApi.patchTour(id,data)
     if(res.tour){
       alert(`Updated Tour ${res.tour.title}`)

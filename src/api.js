@@ -122,6 +122,16 @@ static async patchTour(id, data){
   }
 }
 
+static async deleteTour(id){
+  try{
+    let res = await this.request(`tours/${id}`,{},"delete")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
 }
 
 // for now, put token ("testuser" / "password" on class)

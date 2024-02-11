@@ -13,6 +13,7 @@ import TourDetails from './Components/TourDetails/TourDetails';
 import TourstopDetails from './Components/TourstopDetails/Tourstopdetails';
 import UserForm from './Components/UserForm/UserForm';
 import TourEditForm from './Components/TourEditForm/TourEditForm';
+import TourDelete from './Components/TourDelete/TourDelete';
 import { TourApi } from './api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -80,6 +81,7 @@ function App() {
    <BrowserRouter>
         <MyNavBar user={user} logOut={logOut}/>
         <Routes>
+
           <Route exact path="/signup" element={<SignUpForm logIn={logIn}/>}></Route>    
        
           <Route exact path="/login" element={<LoginForm logIn={logIn}/>}></Route>    
@@ -94,9 +96,12 @@ function App() {
         
           <Route exact path="/users/:username" element={<UserForm getUser = {getUser}/>}></Route>    
        
-          <Route exact path="/tours/:id/edit" element={<TourEditForm/>}></Route>    
+          <Route exact path="/tours/:id/edit" element={<TourEditForm/>}></Route> 
+
+           <Route exact path="/tours/:id/delete" element={<TourDelete/>}></Route>       
       
           <Route exact path="/" element={<Home></Home>}></Route>    
+       
         </Routes>
         </BrowserRouter>
         </userContext.Provider>
