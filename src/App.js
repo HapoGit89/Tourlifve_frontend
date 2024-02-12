@@ -12,6 +12,7 @@ import TourCreateForm from './Components/TourCreateForm/TourCreateForm';
 import TourDetails from './Components/TourDetails/TourDetails';
 import TourstopDetails from './Components/TourstopDetails/Tourstopdetails';
 import UserForm from './Components/UserForm/UserForm';
+import TourstopCreateForm from './Components/TourstopCreateForm/TourstopCreateForm';
 import TourEditForm from './Components/TourEditForm/TourEditForm';
 import TourDelete from './Components/TourDelete/TourDelete';
 import { TourApi } from './api';
@@ -98,8 +99,10 @@ function App() {
        
           <Route exact path="/tours/:id/edit" element={<TourEditForm/>}></Route> 
 
-           <Route exact path="/tours/:id/delete" element={<TourDelete/>}></Route>       
-      
+           <Route exact path="/tours/:id/delete" element={<TourDelete/>}></Route>      
+
+              <Route exact path="/tourstops/new" element={<TourstopCreateForm/>}></Route>        
+        
           <Route exact path="/" element={<Home></Home>}></Route>    
        
         </Routes>

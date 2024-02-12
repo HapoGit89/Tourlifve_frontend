@@ -10,6 +10,12 @@ import { useNavigate } from "react-router-dom"
 
 function TourstopList({tourstops}){
 
+    const navigate = useNavigate()
+
+    const handleClick = ()=>{
+        navigate("/tourstops/new")
+    }
+
 
 
 if(tourstops.length > 0){
@@ -19,7 +25,7 @@ return (
             <h1>Tourstops:</h1>
             </div>
         {tourstops.map((el)=><TourStopCard tourstop={el}></TourStopCard>)}
-        <Button>Add Tourstop</Button>
+        <Button onClick={handleClick}>Add Tourstop</Button>
     </div>
 )
 
@@ -31,11 +37,12 @@ else {
                 <h1>Tourstops:</h1>
                 </div>
             <h3>No Tourstops yet, add some!</h3>
-            <Button>Add Tourstop</Button>
+            <Button onClick={handleClick}>Add Tourstop</Button>
         </div>
     )
 }
 }
+
 
 
 export default TourstopList
