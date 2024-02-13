@@ -1,0 +1,13 @@
+.comboIn{
+    background-color: white;
+    padding: 0.5 rem;
+}
+
+.comboOpt{
+    background-color: whitesmoke;
+}
+
+.comboList {
+    color: black;
+    background-color: white;
+}
