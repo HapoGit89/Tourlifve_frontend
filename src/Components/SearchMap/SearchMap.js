@@ -16,7 +16,7 @@ let center = {
 
 const libraries = ["places"]
 
-function SearchMap() {
+function SearchMap({handleMapOut}) {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -35,7 +35,7 @@ function SearchMap() {
   return isLoaded ? (
    <div>
     <div>
-        <PlacesAutoComplete setSelected={setSelected} ></PlacesAutoComplete>
+        <PlacesAutoComplete setSelected={setSelected} handleMapOut={handleMapOut} ></PlacesAutoComplete>
     </div>
        
       <GoogleMap
@@ -53,18 +53,34 @@ function SearchMap() {
   ) : <></>
 }
 
-const PlacesAutoComplete = ({setSelected})=>{
+const PlacesAutoComplete = ({setSelected, handleMapOut})=>{
   const {ready, value, setValue, suggestions: {status, data}, clearSuggestions, } = usePlacesAutocomplete()  
  
   
   const handleSelect = async(address)=>{
+    console.log(address)
    setValue(address, false)
    clearSuggestions()
    const results = await getGeocode({address})
    const latlng = await getLatLng(results[0])
-   center = latlng
+   // format results for handleMapOut func
+   const formatted_results = {}
+   for (let i =0; i<results[0].address_components.length; i++){
+            formatted_results[results[0].address_components[i].types[0]]=results[0].address_components[i].long_name
+            } 
+   const data = {lat: latlng.lat, 
+    lng: latlng.lng,
+     number: formatted_results.street_number,
+      postal_code: formatted_results.postal_code,
+       country: formatted_results.country, 
+       street: formatted_results.route,
+       city: formatted_results.locality,
+       name: address.slice(0, address.indexOf(",")),
+        googleplaces_id: results[0].place_id}
+    //////////
+    handleMapOut(data)
+    center = latlng
     setSelected(latlng)
-
    
  }
 
