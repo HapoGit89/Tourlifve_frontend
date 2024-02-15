@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState, useContext} from "react"
 import { TourApi } from "../../api"
 import ActivityList from "../ActivityList/ActivityList"
@@ -13,6 +13,7 @@ function TourstopDetails(){
     const {id} = useParams()
     const [data, setData] = useState(null)
     const user = useContext(userContext)
+    const navigate = useNavigate()
    
 
     // get company info for given handle via JoblyApi and update State
@@ -24,6 +25,11 @@ function TourstopDetails(){
             getTourstopData()
     },[user])
 
+    const handleClick = ()=>{
+      navigate("./delete")
+
+    }
+
 
     if(data && user.token && user.tours.filter((el)=>el.id == data.tour_id).length > 0){  //conditional render protects route 
       return (
@@ -33,8 +39,8 @@ function TourstopDetails(){
     color="dark"
     inverse
     style={{
-      width: '100rem',
-      height: '20rem',
+      width: '80rem',
+      height: '25rem',
       justifyContent: "center",
       padding: "4%",
     }}
@@ -49,7 +55,11 @@ function TourstopDetails(){
         <h3>City: {data.city}</h3>
         <p>Date: {data.date.slice(0,10)}</p>
       </CardText>
-      <Button size="lg">Edit Tourstop</Button>
+      <div className="Buttons">
+      <Button size="lg" >Edit Tourstop</Button>
+      <Button size="lg" color="danger" onClick={handleClick}>Delete Tourstop</Button>
+      </div>
+     
     </CardBody>
   </Card>
 

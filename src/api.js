@@ -166,6 +166,20 @@ static async postTourstop(data){
 
 
 
+
+static async deleteTourstop(id){
+  try{
+    let res = await this.request(`tourstops/${id}`,{},"delete")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
+
+
+
 }
 
 // for now, put token ("testuser" / "password" on class)
