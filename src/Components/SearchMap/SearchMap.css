@@ -1,6 +1,11 @@
 .comboIn{
     background-color: white;
-    padding: 0.5 rem;
+    padding: 1vh;;
+    width: 40vh;
+    border-style: solid;
+    border-color: whitesmoke;
+    border-width: 0.5vh;
+
 }
 
 .comboOpt{
@@ -11,3 +16,4 @@
     color: black;
     background-color: white;
 }
+

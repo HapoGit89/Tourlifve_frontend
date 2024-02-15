@@ -1,7 +1,7 @@
 
 import { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap"
+import { useParams, useNavigate } from "react-router-dom";
+import { Form, FormGroup, FormText, Label, Input, Button } from "reactstrap"
 import SearchMap from "../SearchMap/SearchMap";
 import { TourApi } from "../../api";
 import "./TourstopCreateForm.css"
@@ -14,6 +14,7 @@ function TourstopCreateForm(data) {
   const user = useContext(userContext)
   const [formData, setFormData] = useState({})
   const {tour_id} = useParams()
+  const navigate = useNavigate()
 
  
 
@@ -33,8 +34,9 @@ const createTourstop = async (data) => {
       lat: data.lng,
     lng: data.lng})
 
+
   if(res.location){
-    location = res.location[0]
+    location = res.location
   }
 
   else if(res.response.data.error.message.slice(0,18)==="Duplicate location"){
@@ -46,11 +48,14 @@ const createTourstop = async (data) => {
     alert ( 'ooops something went wrong, please try again or contact support')
   }
 
+ 
+
 
   const res3 = await TourApi.postTourstop({date: data.date, location_id: location.id, tour_id: Number(tour_id)})
 
   if (res3.tourstop){
     alert(`Created Tourstop at ${data.name} on ${data.date}`)
+    navigate("./../..")
   }
   else if ( res3.response.data.error.message.slice(0,18)==="Duplicate tourstop"){
   alert("Sorry that tourstop already exists!")
@@ -91,6 +96,9 @@ const createTourstop = async (data) => {
       <div className="resultForm">
 
       <Form onSubmit={handleSubmit}>
+        <h1>  Your Selected Location:</h1>
+        
+       
            <FormGroup>
     <Label for="userName">
       Location Name:
@@ -151,10 +159,10 @@ const createTourstop = async (data) => {
     </Label>
     <Input
       id="housenumber"
-      name="number"
+      name="housenumber"
       placeholder="number"
       type="text"
-      value={formData.number || ""}
+      value={formData.housenumber || ""}
     
     />
   </FormGroup>

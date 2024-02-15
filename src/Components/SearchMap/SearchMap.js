@@ -4,9 +4,10 @@ import { useState, useCallback } from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import usePlacesAutocomplete, {getLatLng, getGeocode} from 'use-places-autocomplete';
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox';
+import "./SearchMap.css"
 const containerStyle = {
-  width: '600px',
-  height: '600px'
+  width: '100vh',
+  height: '70vh',
 };
 
 let center = {
@@ -34,7 +35,7 @@ function SearchMap({handleMapOut}) {
 
   return isLoaded ? (
    <div>
-    <div>
+    <div className="SearchField">
         <PlacesAutoComplete setSelected={setSelected} handleMapOut={handleMapOut} ></PlacesAutoComplete>
     </div>
        
@@ -44,7 +45,7 @@ function SearchMap({handleMapOut}) {
         zoom={6}
         onUnmount={onUnmount}
       >
-      
+     
       {selected && <Marker position={selected} />}
         <></>
       </GoogleMap>
@@ -67,6 +68,7 @@ const PlacesAutoComplete = ({setSelected, handleMapOut})=>{
    for (let i =0; i<results[0].address_components.length; i++){
             formatted_results[results[0].address_components[i].types[0]]=results[0].address_components[i].long_name
             } 
+
    const data = {lat: latlng.lat, 
     lng: latlng.lng,
      housenumber: formatted_results.street_number,
@@ -85,9 +87,9 @@ const PlacesAutoComplete = ({setSelected, handleMapOut})=>{
 
    return (
        <Combobox onSelect={handleSelect}>
-           <ComboboxInput value={value} disabled={!ready} className="comboIn" onChange={e=> setValue(e.target.value)}/>
+           <ComboboxInput value={value} disabled={!ready} placeholder= "Search for a place..." className="comboIn" onChange={e=> setValue(e.target.value)}/>
            <ComboboxPopover>
-             <ComboboxList className='comboList'>{status === "OK" && data.map(({place_id, description})=> <ComboboxOption className='comboOpt' key={place_id} value={description}/>)}</ComboboxList>
+             <ComboboxList className='comboList' style={{background: "white"}}>{status === "OK" && data.map(({place_id, description})=> <ComboboxOption className='comboOpt' key={place_id} value={description}/>)}</ComboboxList>
            </ComboboxPopover>
        </Combobox>
    )  
