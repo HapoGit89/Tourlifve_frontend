@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom"
 
 
 
-function TourstopList({tourstops}){
+function TourstopList({tourstops, tour_id}){
 
     const navigate = useNavigate()
 
     const handleClick = ()=>{
-        navigate("/tourstops/new")
+        navigate(`/tours/${tour_id}/tourstops/new`)
     }
 
 

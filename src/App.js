@@ -101,7 +101,7 @@ function App() {
 
            <Route exact path="/tours/:id/delete" element={<TourDelete/>}></Route>      
 
-              <Route exact path="/tourstops/new" element={<TourstopCreateForm/>}></Route>        
+              <Route exact path="/tours/:tour_id/tourstops/new" element={<TourstopCreateForm/>}></Route>        
         
           <Route exact path="/" element={<Home></Home>}></Route>    
        

@@ -50,7 +50,7 @@ function TourDetails(){
             </div>
         </div>
          <div>
-              <TourstopList tourstops={data.tourstops}></TourstopList>
+              <TourstopList tour_id={id} tourstops={data.tourstops}></TourstopList>
         </div>
     </div>
       )}

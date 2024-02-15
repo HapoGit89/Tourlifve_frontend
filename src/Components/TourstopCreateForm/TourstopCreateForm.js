@@ -1,5 +1,6 @@
 
 import { useContext, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import SearchMap from "../SearchMap/SearchMap";
 import { TourApi } from "../../api";
@@ -12,10 +13,56 @@ function TourstopCreateForm(data) {
   // React controlled Form for User Login
   const user = useContext(userContext)
   const [formData, setFormData] = useState({})
+  const {tour_id} = useParams()
+
+ 
 
 
-  const createTourstop = () => {
 
+const createTourstop = async (data) => {
+  
+     let location = {}
+    // post location or get existing location from db
+    const res = await TourApi.postLocation({name: data.name,
+       housenumber: data.housenumber, 
+       city: data.city, 
+       street: data.street, 
+       postal_code: data.postal_code,
+      googleplaces_id: data.googleplaces_id,
+      country:data.country,
+      lat: data.lng,
+    lng: data.lng})
+
+  if(res.location){
+    location = res.location[0]
+  }
+
+  else if(res.response.data.error.message.slice(0,18)==="Duplicate location"){
+    const res2 = await TourApi.getAllLocations()
+    location = res2.locations.filter((el)=>el.googleplaces_id==data.googleplaces_id)[0]
+  }
+
+  else {
+    alert ( 'ooops something went wrong, please try again or contact support')
+  }
+
+
+  const res3 = await TourApi.postTourstop({date: data.date, location_id: location.id, tour_id: Number(tour_id)})
+
+  if (res3.tourstop){
+    alert(`Created Tourstop at ${data.name} on ${data.date}`)
+  }
+  else if ( res3.response.data.error.message.slice(0,18)==="Duplicate tourstop"){
+  alert("Sorry that tourstop already exists!")
+}
+  else {
+    alert("oops something went wrong")
+  }
+}
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    createTourstop(formData)
   }
 
   const handleChange = e => {
@@ -43,7 +90,7 @@ function TourstopCreateForm(data) {
 
       <div className="resultForm">
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
            <FormGroup>
     <Label for="userName">
       Location Name:

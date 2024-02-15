@@ -132,6 +132,40 @@ static async deleteTour(id){
   }
 }
 
+static async postLocation(data){
+  try{
+    let res = await this.request(`locations`,{...data},"post")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
+static async getAllLocations(){
+
+  try{
+    let res = await this.request(`locations`,{},"get")
+    return res
+  }
+  catch(e){
+    return e
+  }
+
+}
+
+static async postTourstop(data){
+  try{
+    let res = await this.request(`tourstops`,{...data},"post")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
+
+
 }
 
 // for now, put token ("testuser" / "password" on class)

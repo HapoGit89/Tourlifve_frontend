@@ -58,7 +58,6 @@ const PlacesAutoComplete = ({setSelected, handleMapOut})=>{
  
   
   const handleSelect = async(address)=>{
-    console.log(address)
    setValue(address, false)
    clearSuggestions()
    const results = await getGeocode({address})
@@ -70,10 +69,10 @@ const PlacesAutoComplete = ({setSelected, handleMapOut})=>{
             } 
    const data = {lat: latlng.lat, 
     lng: latlng.lng,
-     number: formatted_results.street_number,
+     housenumber: formatted_results.street_number,
       postal_code: formatted_results.postal_code,
        country: formatted_results.country, 
-       street: formatted_results.route,
+       street: formatted_results.route || formatted_results.establishment,
        city: formatted_results.locality,
        name: address.slice(0, address.indexOf(",")),
         googleplaces_id: results[0].place_id}
