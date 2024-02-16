@@ -73,7 +73,7 @@ const PlacesAutoComplete = ({setSelected, handleMapOut})=>{
 
    const data = {lat: latlng.lat, 
     lng: latlng.lng,
-     housenumber: formatted_results.street_number,
+     housenumber: formatted_results.street_number || "",
       postal_code: formatted_results.postal_code,
        country: formatted_results.country, 
        street: formatted_results.route || formatted_results.establishment,

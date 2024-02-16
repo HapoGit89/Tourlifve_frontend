@@ -8,6 +8,7 @@ import Home from './Components/Home/Home';
 import SignUpForm from './Components/SignUpForm/SignUpForm'
 import LoginForm from './Components/LoginForm/LoginForm';
 import TourList from './Components/TourList/TourList';
+import ActivityCreateForm from './Components/ActivityCreateForm/ActivityCreateForm';
 import TourstopDelete from './Components/TourstopDelete/TourstopDelete';
 import TourCreateForm from './Components/TourCreateForm/TourCreateForm';
 import TourDetails from './Components/TourDetails/TourDetails';
@@ -104,8 +105,10 @@ function App() {
 
           <Route exact path="/tours/:tour_id/tourstops/new" element={<TourstopCreateForm/>}></Route>    
 
-          <Route exact path="/tourstops/:tourstop_id/delete" element={<TourstopDelete/>}></Route>     
+          <Route exact path="/tourstops/:tourstop_id/activity" element={<ActivityCreateForm/>}></Route>     
         
+          <Route exact path="/tourstops/:tourstop_id/delete" element={<TourstopDelete/>}></Route>     
+         
           <Route exact path="/" element={<Home></Home>}></Route>    
        
         </Routes>

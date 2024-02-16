@@ -1,0 +1,13 @@
+.SearchForm{
+    
+    display: flex;
+    justify-content:space-around;
+    flex-direction: column;
+    height:auto;
+    width: 100vh;
+    border-style: solid;
+    border-radius: 2%;
+    color: white;
+    padding: 2%;
+    margin-top: 2%;
+}
