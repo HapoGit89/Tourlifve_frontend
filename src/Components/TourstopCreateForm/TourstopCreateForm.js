@@ -21,6 +21,7 @@ function TourstopCreateForm(data) {
 
 
 const createTourstop = async (data) => {
+
   
      let location = {}
     // post location or get existing location from db
@@ -35,6 +36,9 @@ const createTourstop = async (data) => {
     lng: data.lng})
 
 
+    console.log(res)
+
+
   if(res.location){
     location = res.location
   }
@@ -47,6 +51,9 @@ const createTourstop = async (data) => {
   else {
     alert ( 'ooops something went wrong, please try again or contact support')
   }
+
+ 
+
 
  
 
