@@ -1,12 +1,11 @@
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Form, FormGroup, FormText, Label, Input, Button } from "reactstrap"
 import ActivityMap from "../ActivityMap/ActivityMap";
 import ActivitySearchForm from "../ActivitySearchForm/ActivitySearchForm";
 import { TourApi } from "../../api";
 import userContext from "../../userContext";
-import { Card } from "reactstrap";
 import "./ActivityCreateForm.css"
 
 
@@ -14,20 +13,27 @@ function ActivityCreateForm(data) {
   // React controlled Form for User Login
   const user = useContext(userContext)
   const [formData, setFormData] = useState({})
+  const [tourstop, setTourstop] = useState({})
   const {tourstop_id} = useParams()
   const navigate = useNavigate()
 
 
- 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFormData(fData => ({
-      ...fData,
-      [name]: value
-    }));
-  }
+   // get tourstop info from TourApi and store in state
+   useEffect(()=>{
+    const getTourstopData= async()=>{
+        const res = await TourApi.getTourstopDetails(tourstop_id) 
+        setTourstop(res.tourstop)
+        }
+        getTourstopData()
+},[user])
+
+const handleSearch = async (data) => {
+  const res = await TourApi.searchPlaces({lat: tourstop.lat, lng: tourstop.lng, origin_id: tourstop.googlemaps_id, mode: data.travelti})
+
+  console.log(res)
 
 
+}
 
 
   if (user.token) {
@@ -36,8 +42,8 @@ function ActivityCreateForm(data) {
        
 
     <div className="ActivityMap">
-            <ActivityMap></ActivityMap>
-            <ActivitySearchForm></ActivitySearchForm>
+            <ActivityMap location = {{lat: tourstop.lat, lng: tourstop.lng}}></ActivityMap>
+            <ActivitySearchForm handleSearch={handleSearch} ></ActivitySearchForm>
     </div>
 
    

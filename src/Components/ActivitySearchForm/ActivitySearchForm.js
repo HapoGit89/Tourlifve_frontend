@@ -1,10 +1,36 @@
 
 import { Form, FormGroup, FormText, Label, Input, Button } from "reactstrap"
 import { useState } from "react"
+import { TimeConversion } from "./TimeConversion"
 import "./ActivitySearchForm.css"
 
-function ActivitySearchForm() {
+function ActivitySearchForm({handleSearch}) {
 const [formData, setFormData] = useState({})
+
+
+const handleChange = e => {
+  const { name, value } = e.target;
+  if(name==="traveltime"){
+    setFormData(fData => ({
+      ...fData,
+      [name]: TimeConversion.StringToSeconds(value)
+    }));
+
+  }
+  else{
+  setFormData(fData => ({
+    ...fData,
+    [name]: value
+  }));
+  }
+}
+
+
+const handleSubmit = (e)=>{
+  e.target.preventDefault()
+  handleSearch(...formData)
+}
+
 
 
 
@@ -14,7 +40,8 @@ return (
 
     
 
-<Form>
+<Form 
+onSubmit={handleSubmit}>
   <h1>  Search For Interesting Places:</h1>
   
  
@@ -25,7 +52,8 @@ id="keyword"
 name="keyword"
 placeholder="Keyword..."
 type="text"
-value={formData.name || ""}
+value={formData.keyword || ""}
+onChange={handleChange}
 
 />
 </FormGroup>
@@ -40,6 +68,8 @@ id="traveltime"
 name="traveltime"
 placeholder="Traveltime"
 type="select"
+onChange={handleChange}
+value = {TimeConversion.SecondsToString(formData.traveltime)|| ""}
 
 
     >
@@ -78,15 +108,17 @@ type="select"
 
 </FormGroup>
 <FormGroup>
-<Label for="address" >
+<Label for="mode" >
 Mode of Travel:
 </Label>
 <Input
-className="address"
-id="address"
-name="address"
-placeholder="Address..."
+className="mode"
+id="mode"
+name="mode"
+placeholder="Mode of transport"
 type="select"
+value={formData.mode || ""}
+onChange={handleChange}
 
 
     >

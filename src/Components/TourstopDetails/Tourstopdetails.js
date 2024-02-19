@@ -16,7 +16,7 @@ function TourstopDetails(){
     const navigate = useNavigate()
    
 
-    // get company info for given handle via JoblyApi and update State
+    // get TourstopDetails and store in state
     useEffect(()=>{
         const getTourstopData= async()=>{
             const res = await TourApi.getTourstopDetails(id) 

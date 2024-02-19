@@ -63,7 +63,7 @@ const PlacesAutoComplete = ({setSelected, handleMapOut})=>{
    clearSuggestions()
    const results = await getGeocode({address})
    const latlng = await getLatLng(results[0])
-   console.log(results)
+ 
    // format results for handleMapOut func
    const formatted_results = {}
    for (let i =0; i<results[0].address_components.length; i++){
@@ -76,10 +76,11 @@ const PlacesAutoComplete = ({setSelected, handleMapOut})=>{
      housenumber: formatted_results.street_number || "",
       postal_code: formatted_results.postal_code,
        country: formatted_results.country, 
-       street: formatted_results.route || formatted_results.establishment,
+       street: formatted_results.route || formatted_results.establishment || "",
        city: formatted_results.locality  || formatted_results.postal_town,
        name: address.slice(0, address.indexOf(",")),
         googleplaces_id: results[0].place_id}
+
     //////////
     handleMapOut(data)
     center = latlng

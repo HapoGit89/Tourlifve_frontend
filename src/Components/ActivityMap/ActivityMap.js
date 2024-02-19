@@ -7,14 +7,11 @@ const containerStyle = {
   height: '55vh',
 };
 
-let center = {
-  lat: 53.745,
-  lng: 10.523
-};
+
 
 const libraries = ["places"]
 
-function ActivityMap() {
+function ActivityMap({location,results}) {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -36,12 +33,12 @@ function ActivityMap() {
        
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
-        zoom={6}
+        center={location}
+        zoom={12}
         onUnmount={onUnmount}
       >
      
-      {selected && <Marker position={selected} />}
+      {location && <Marker position={location} />}
         <></>
       </GoogleMap>
       </div>

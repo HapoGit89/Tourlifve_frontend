@@ -32,7 +32,7 @@ const createTourstop = async (data) => {
        postal_code: data.postal_code,
       googleplaces_id: data.googleplaces_id,
       country:data.country,
-      lat: data.lng,
+      lat: data.lat,
     lng: data.lng})
 
 

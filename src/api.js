@@ -178,6 +178,17 @@ static async deleteTourstop(id){
 }
 
 
+static async searchPlaces(data){
+  try{
+    let res = await this.request(`search/complex`,{...data},"post")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
+
 
 
 }
