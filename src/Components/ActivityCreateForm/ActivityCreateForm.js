@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Form, FormGroup, FormText, Label, Input, Button } from "reactstrap"
 import ActivityMap from "../ActivityMap/ActivityMap";
 import ActivitySearchForm from "../ActivitySearchForm/ActivitySearchForm";
+import { fromPlaceId, setKey} from "react-geocode";
 import { TourApi } from "../../api";
 import userContext from "../../userContext";
 import "./ActivityCreateForm.css"
@@ -12,11 +13,12 @@ import "./ActivityCreateForm.css"
 function ActivityCreateForm(data) {
   // React controlled Form for User Login
   const user = useContext(userContext)
-  const [formData, setFormData] = useState({})
-  const [tourstop, setTourstop] = useState({})
+  const [tourstop, setTourstop] = useState()
+  const [results, setResults] = useState({})
   const {tourstop_id} = useParams()
   const navigate = useNavigate()
 
+  setKey(process.env.REACT_APP_API_KEY)
 
    // get tourstop info from TourApi and store in state
    useEffect(()=>{
@@ -28,21 +30,29 @@ function ActivityCreateForm(data) {
 },[user])
 
 const handleSearch = async (data) => {
-  const res = await TourApi.searchPlaces({lat: tourstop.lat, lng: tourstop.lng, origin_id: tourstop.googlemaps_id, mode: data.travelti})
+  const res = await TourApi.searchPlaces({lat: tourstop.lat, lng: tourstop.lng, origin_id: tourstop.googleplaces_id, mode: data.mode, duration: data.traveltime, query:data.keyword})
+  for(let i = 0; i < res.destinations.length; i++){
+    // get geolocations for each result and add it to result object
+    fromPlaceId(res.destinations[i].place_id)
+    .then(({ results }) => {
+      const { lat, lng } = results[0].geometry.location;
+      res.destinations[i].position = {lat:lat, lng: lng}
+    })
+    .catch(console.error);
+  
+  }
 
-  console.log(res)
-
-
+  setResults(res.destinations)
 }
 
 
-  if (user.token) {
+  if (user.token && tourstop) {
     return (<div className="ActivityCreateForm">
 
        
 
     <div className="ActivityMap">
-            <ActivityMap location = {{lat: tourstop.lat, lng: tourstop.lng}}></ActivityMap>
+            <ActivityMap results={{results}} location = {{lat: tourstop.lat, lng: tourstop.lng}}></ActivityMap>
             <ActivitySearchForm handleSearch={handleSearch} ></ActivitySearchForm>
     </div>
 
@@ -65,7 +75,7 @@ const handleSearch = async (data) => {
       name="name"
       placeholder="Place name..."
       type="text"
-      value={formData.name || ""}
+
      
     />
   </FormGroup>
@@ -79,7 +89,7 @@ const handleSearch = async (data) => {
       name="address"
       placeholder="Address..."
       type="text"
-      value={formData.address|| ""}
+      
       
     />
   </FormGroup>
@@ -92,7 +102,7 @@ const handleSearch = async (data) => {
       name="category"
       placeholder="Category"
       type="text"
-      value={formData.category|| ""}
+  
      
     />
   </FormGroup>
@@ -105,7 +115,7 @@ const handleSearch = async (data) => {
       name="distance"
       placeholder="Distance"
       type="text"
-      value={formData.distance || ""}
+    
       
     />
   </FormGroup>
@@ -119,7 +129,7 @@ const handleSearch = async (data) => {
       name="mode"
       placeholder="Walking/Driving/Public Transport..."
       type="text"
-      value={formData.mode || ""}
+
     
     />
   </FormGroup>

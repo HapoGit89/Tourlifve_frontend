@@ -1,6 +1,8 @@
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback , useEffect} from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+
+
 
 const containerStyle = {
   width: '100vh',
@@ -11,7 +13,8 @@ const containerStyle = {
 
 const libraries = ["places"]
 
-function ActivityMap({location,results}) {
+function ActivityMap({location}, results) {
+
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -27,6 +30,10 @@ function ActivityMap({location,results}) {
 
 
 
+
+
+
+
   return isLoaded ? (
    <div>
    
@@ -39,6 +46,9 @@ function ActivityMap({location,results}) {
       >
      
       {location && <Marker position={location} />}
+     
+     
+  
         <></>
       </GoogleMap>
       </div>

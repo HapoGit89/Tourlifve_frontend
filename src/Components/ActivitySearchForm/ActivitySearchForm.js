@@ -27,8 +27,8 @@ const handleChange = e => {
 
 
 const handleSubmit = (e)=>{
-  e.target.preventDefault()
-  handleSearch(...formData)
+  e.preventDefault()
+  handleSearch(formData)
 }
 
 
@@ -73,6 +73,9 @@ value = {TimeConversion.SecondsToString(formData.traveltime)|| ""}
 
 
     >
+      <option>
+        Please Select
+      </option>
       <option>
         5 min
       </option>
@@ -121,7 +124,9 @@ value={formData.mode || ""}
 onChange={handleChange}
 
 
-    >
+    > <option>
+      Please Select
+    </option>
       <option>
         walking
       </option>
@@ -129,7 +134,10 @@ onChange={handleChange}
         driving
       </option>
       <option>
-        public transport
+        bicycling
+      </option>
+      <option>
+        transit
       </option>
      
       </Input>
