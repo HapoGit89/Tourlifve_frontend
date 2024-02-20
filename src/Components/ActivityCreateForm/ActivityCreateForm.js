@@ -31,18 +31,19 @@ function ActivityCreateForm(data) {
 
 const handleSearch = async (data) => {
   const res = await TourApi.searchPlaces({lat: tourstop.lat, lng: tourstop.lng, origin_id: tourstop.googleplaces_id, mode: data.mode, duration: data.traveltime, query:data.keyword})
+  const geoPromises = []
   for(let i = 0; i < res.destinations.length; i++){
-    // get geolocations for each result and add it to result object
-    fromPlaceId(res.destinations[i].place_id)
-    .then(({ results }) => {
-      const { lat, lng } = results[0].geometry.location;
-      res.destinations[i].position = {lat:lat, lng: lng}
-    })
-    .catch(console.error);
-  
+    geoPromises.push(fromPlaceId(res.destinations[i].place_id))
   }
+  Promise.all(geoPromises).then(results=>{
+        for(let i=0; i <results.length; i++){
+       res.destinations[i].position= results[i].results[0].geometry.location
+         
+        }
+        setResults(res.destinations)
+  })
 
-  setResults(res.destinations)
+
 }
 
 
@@ -52,7 +53,7 @@ const handleSearch = async (data) => {
        
 
     <div className="ActivityMap">
-            <ActivityMap results={{results}} location = {{lat: tourstop.lat, lng: tourstop.lng}}></ActivityMap>
+            <ActivityMap key ={results.length} results={results} location = {{location: {lat: tourstop.lat, lng: tourstop.lng}, name:tourstop.name}}></ActivityMap>
             <ActivitySearchForm handleSearch={handleSearch} ></ActivitySearchForm>
     </div>
 
