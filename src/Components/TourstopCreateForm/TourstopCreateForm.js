@@ -36,9 +36,6 @@ const createTourstop = async (data) => {
     lng: data.lng})
 
 
-    console.log(res)
-
-
   if(res.location){
     location = res.location
   }

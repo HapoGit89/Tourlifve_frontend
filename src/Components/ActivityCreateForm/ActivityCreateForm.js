@@ -1,7 +1,6 @@
 
 import { useContext, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Form, FormGroup, FormText, Label, Input, Button } from "reactstrap"
 import ActivityMap from "../ActivityMap/ActivityMap";
 import PoiResultCard from "../PoiResultCard/PoiResultCard";
 import ActivitySearchForm from "../ActivitySearchForm/ActivitySearchForm";
@@ -23,13 +22,14 @@ function ActivityCreateForm(data) {
   setKey(process.env.REACT_APP_API_KEY)
 
    // get tourstop info from TourApi and store in state
-   useEffect(()=>{
+  useEffect(()=>{
     const getTourstopData= async()=>{
         const res = await TourApi.getTourstopDetails(tourstop_id) 
         setTourstop(res.tourstop)
         }
         getTourstopData()
-},[user])
+  },[user])
+
 
 const handleSearch = async (data) => {
       const res = await TourApi.searchPlaces({lat: tourstop.lat, lng: tourstop.lng, origin_id: tourstop.googleplaces_id, mode: data.mode, duration: data.traveltime, query:data.keyword})
@@ -46,11 +46,53 @@ const handleSearch = async (data) => {
       })
 }
 
+
+
 const handleMarkerClick = (id)=>{
-const selectedData = results.filter((el)=>el.place_id===id)
-setSelected(selectedData[0])
+  const selectedData = results.filter((el)=>el.place_id===id)
+  setSelected(selectedData[0])
 }
-console.log(selected)
+
+
+
+const createActivity = async () => {
+
+          let poi = {}
+        // post location or get existing location from db
+        const res = await TourApi.postPoi({name: selected.name,
+            address: selected.address, 
+            googleplaces_id: selected.place_id, 
+            googlemaps_link: selected.googlemaps_uri,
+            category: selected.category || ""})
+
+
+        if(res.poi){
+        poi = res.poi
+        }
+
+        else if(res.response.data.error.message.slice(0,13)==="Duplicate poi"){
+        const res2 = await TourApi.getAllPois()
+        poi = res2.pois.filter((el)=>el.googleplaces_id==selected.place_id)[0]
+        }
+
+        else {
+        alert ( 'ooops something went wrong, please try again or contact support')
+        }
+
+        const res3 = await TourApi.postActivity({tourstop_id: Number(tourstop_id), poi_id: poi.id, traveltime: selected.duration_value_secs, travelmode: selected.mode})
+
+        if (res3.activity){
+        alert(`Created Activity at ${selected.name} for tourstop ${tourstop_id}`)
+        navigate("./../")
+        }
+        else if ( res3.response.data.error.message.slice(0,13)==="Duplicate activity"){
+        alert("Sorry that activity already exists!")
+        }
+        else {
+        alert("oops something went wrong")
+        }
+}
+
 
 
   if (user.token && tourstop) {
@@ -67,7 +109,7 @@ console.log(selected)
 
       <div className="results">
 
-        <PoiResultCard key={selected.place_id} activity={selected}></PoiResultCard>
+        <PoiResultCard createActivity={createActivity}key={selected.place_id} activity={selected}></PoiResultCard>
         
 
       </div>

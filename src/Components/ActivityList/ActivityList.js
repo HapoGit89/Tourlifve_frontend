@@ -1,8 +1,6 @@
-import {React, useContext, useEffect} from "react"
+import {React} from "react"
 import { useNavigate } from "react-router-dom"
 import "./ActivityList.css"
-import userContext from "../../userContext"
-import TourStopCard from "../TourStopCard/TourStopCard"
 import ActivityCard from "../ActivityCard/ActivityCard"
 import { Button } from "reactstrap"
 
@@ -27,7 +25,7 @@ return (
     <div className="ActivitiesList">
         
         {activities.map((el)=><ActivityCard activity={el}></ActivityCard>)}
-        <Button size= "lg">Add Place</Button>
+        <Button onClick={handleClick}>Find And Add Places</Button>
     </div>
     </>
 )

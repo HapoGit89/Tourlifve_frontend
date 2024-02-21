@@ -1,5 +1,4 @@
 import { Card,CardBody, CardHeader,CardTitle,CardSubtitle, CardText,Button } from "reactstrap";
-import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./PoiResultCard.css"
 
@@ -8,10 +7,14 @@ const unix = require("unix-timestamp")
 
 
 
-function PoiResultCard ({activity}){
+function PoiResultCard (props){
   // user reactstrap Card component to render activity data
 
   const navigate = useNavigate()
+
+  const handleClick=()=>
+  {props.createActivity()
+}
 
   
     return (
@@ -30,18 +33,18 @@ function PoiResultCard ({activity}){
   </CardHeader>
   <CardBody>
     <CardTitle tag="h1">
-      {activity.name}
+      {props.activity.name}
     </CardTitle>
     <CardText>
         <ul className="Details">
-       <li><h5><b>Adress:</b>{activity.address}</h5></li> 
-     <li><h5><b>Distance:</b> {activity.distance}</h5></li>
-    <li><h5><b>Traveltime:</b> {activity.mode}  {activity.duration_text} </h5></li> 
-    <li><h5> <a href={activity.googlemaps_uri}><b>Googlemaps Link</b></a> </h5></li> 
+       <li><h5><b>Adress:</b>{props.activity.address}</h5></li> 
+     <li><h5><b>Distance:</b> {props.activity.distance}</h5></li>
+    <li><h5><b>Traveltime:</b> {props.activity.mode}  {props.activity.duration_text} </h5></li> 
+    <li><h5> <a href={props.activity.googlemaps_uri} target="_blank"><b>Googlemaps Link</b></a> </h5></li> 
         </ul>
     
     </CardText>
-    <Button size="lg">
+    <Button size="lg" onClick={handleClick}>
       Save for Tourstop
     </Button>
   </CardBody>
