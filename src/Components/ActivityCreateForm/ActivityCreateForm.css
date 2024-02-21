@@ -1,17 +1,4 @@
 
-.resultForm{
-    display: flex;
-    justify-content:space-around;
-    flex-direction: column;
-    height:80vh;
-    width: 80vh;
-    border-style: solid;
-    border-radius: 2%;
-    padding: 5%;
-    color: white;
-
-}
-
 .ActivityCreateForm{
     display: flex;
     flex-direction: row;

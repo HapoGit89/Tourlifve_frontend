@@ -1,5 +1,5 @@
 
-import { useState, useCallback , useEffect} from 'react';
+import { useState, useCallback , useEffect, useRef} from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import "./ActivityMap.css"
 
@@ -15,7 +15,7 @@ const containerStyle = {
 const libraries = ["places"]
 
 function ActivityMap(props) {
-
+const myRef = useRef()
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -28,6 +28,10 @@ function ActivityMap(props) {
   const onUnmount = useCallback(function callback(map) {
     setMap(null)
   }, [])
+
+  const handleClick = (data)=>{
+     props.handleMarkerClick(data)
+  }
 
 
 
@@ -46,7 +50,7 @@ function ActivityMap(props) {
       >
      
       {props.location && <Marker position={props.location.location} label={props.location.name}   />}
-      {props.results && props.results.length >0 && props.results.map((el)=><Marker icon={"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"} clickable={true} opacity={0.9} key={el.place_id} position={el.position}></Marker>)}
+      {props.results && props.results.length >0 && props.results.map((el)=><Marker onClick={()=>handleClick(el.place_id)}className="Marker" icon={"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"} clickable={true}  opacity={0.9} key={el.place_id} position={el.position}></Marker>)}
    
      
     
