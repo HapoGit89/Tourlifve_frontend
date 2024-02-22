@@ -42,6 +42,9 @@ const handleSearch = async (data) => {
           res.destinations[i].position= results[i].results[0].geometry.location
             
             }
+            if(res.destinations.length == 0){
+              alert("Sorry couldnt find any places for your search!")
+            }
             setResults(res.destinations)
       })
 }

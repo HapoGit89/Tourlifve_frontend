@@ -1,14 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState, useContext} from "react"
 import { TourApi } from "../../api"
-import {Button} from "reactstrap"
+import { Button } from "reactstrap"
 import userContext from "../../userContext"
-import "./TourDelete.css"
+import "./ActivityDelete.css"
 
 
-function TourDelete(){
+function ActivityDelete(){
   // Shows company details for given tour_id
-    const {id} = useParams()
+    const {activity_id} = useParams()
     const [data, setData] = useState(null)
     const user = useContext(userContext)
     const navigate = useNavigate()
@@ -17,20 +17,21 @@ function TourDelete(){
 
         // get company info for given handle via JoblyApi and update State
         useEffect(()=>{
-            const getTourData= async()=>{
-                const res = await TourApi.getTourDetails(id) 
-                setData(res.tour)
+            const getActivityData= async()=>{
+                const res = await TourApi.getActivity(activity_id) 
+                setData(res.activity)
                 }
-                getTourData()
+                getActivityData()
     
         },[user])
 
-    const deleteTour = async () => {
+    const deleteActivity = async () => {
       
-        const res = await TourApi.deleteTour(id)
+        const res = await TourApi.deleteActivity(activity_id)
        if(res.deleted){
-        alert(`Deleted Tour ${data.title}`)
-        navigate("./../..")
+        console.log(res.deleted)
+        alert(`Deleted Activity ${data.poi_name}`)
+        navigate("./../../..")
         window.location.reload()
        }
        else {
@@ -47,7 +48,7 @@ function TourDelete(){
     }
 
     const handleClick2 = ()=>{
-        deleteTour()
+        deleteActivity()
 
       
     }
@@ -55,12 +56,12 @@ function TourDelete(){
   
 
 
-    if(data  && user.token && data.user_id == user.id){  //conditional render protects route 
+    if(data  && user.token && data.user_id == user.id){  //conditional render 
       return (
     <div className="TourDeleteCard"> 
         <div className="Tourinfo">
-            <h1>Do your really want to delete tour:</h1>
-            <h1>{data.title} ?</h1>
+            <h1>Do your really want to delete Activity:</h1>
+            <h1>{data.poi_name} ?</h1>
             <div className="Buttons">
                 <Button size="lg" color="primary" onClick={handleClick1}>No</Button>
                 <Button size="lg" color="danger" onClick={handleClick2}>Yes</Button>
@@ -89,4 +90,4 @@ function TourDelete(){
   
 }
 
-export default TourDelete
+export default ActivityDelete

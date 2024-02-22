@@ -165,6 +165,17 @@ static async postTourstop(data){
 }
 
 
+static async patchTourstop(id,data){
+  try{
+    let res = await this.request(`tourstops/${id}`,{...data},"patch")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
+
 
 
 static async deleteTourstop(id){
@@ -211,6 +222,26 @@ static async getAllPois(){
 static async postActivity(data){
   try{
     let res = await this.request(`activities`,{...data},"post")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
+static async getActivity(id){
+  try{
+    let res = await this.request(`activities/${id}`,{},"get")
+    return res
+  }
+  catch(e){
+    return e
+  }
+}
+
+static async deleteActivity(id){
+  try{
+    let res = await this.request(`activities/${id}`,{},"delete")
     return res
   }
   catch(e){

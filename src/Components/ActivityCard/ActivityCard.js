@@ -13,6 +13,10 @@ function ActivityCard ({activity}){
 
   const navigate = useNavigate()
 
+  const handleClick = ()=>{
+    navigate(`./activity/${activity.activity_id}/delete`)
+  }
+
   
     return (
   <div className="ActivityCard">
@@ -22,16 +26,18 @@ function ActivityCard ({activity}){
   inverse
   style={{
     width: '40rem',
-    height:'15rem',
+    height:'23rem',
     padding: "5%"
   }}>
 <CardBody>
       <CardText>
-        <h3>{activity.name}</h3>
-        <h4>Category: {activity.category}</h4>
+        <h2>{activity.name}</h2>
         <h4>Address: {activity.address}</h4>
         <h4>Distance: {Math.floor(activity.traveltime/60)+1} minutes by {activity.travelmode}</h4>
+        {<h4>Category: {activity.category || "-"}</h4>}
+        <h4><a href={activity.googlemaps_link}><b>Link</b></a></h4>
       </CardText>
+      <Button onClick={handleClick}>Delete Activity</Button>
     </CardBody>
   </Card>
 

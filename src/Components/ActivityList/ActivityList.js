@@ -25,8 +25,9 @@ return (
     <div className="ActivitiesList">
         
         {activities.map((el)=><ActivityCard activity={el}></ActivityCard>)}
-        <Button onClick={handleClick}>Find And Add Places</Button>
+        
     </div>
+    <Button onClick={handleClick} size="lg">Find And Add Places</Button>
     </>
 )
 
@@ -40,8 +41,9 @@ else {
         <div className="ActivitiesList">
           
             <h3>No Places yet, add some!</h3>
-            <Button onClick={handleClick}>Find And Add Places</Button>
+        
         </div>
+        <Button onClick={handleClick} size="lg">Find And Add Places</Button>
         </>
     )
 }

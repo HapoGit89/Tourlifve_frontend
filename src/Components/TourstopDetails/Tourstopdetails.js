@@ -26,6 +26,11 @@ function TourstopDetails(){
     },[user])
 
     const handleClick = ()=>{
+      navigate("./edit")
+    }
+
+
+    const handleClick2 = ()=>{
       navigate("./delete")
 
     }
@@ -36,13 +41,12 @@ function TourstopDetails(){
         <div className="TourDetails"> 
            <Card
     className="my-2"
-    color="dark"
+    color="secondary"
     inverse
     style={{
       width: '80rem',
       height: '25rem',
       justifyContent: "center",
-      padding: "4%",
     }}
   >
   
@@ -56,15 +60,20 @@ function TourstopDetails(){
         <p>Date: {data.date.slice(0,10)}</p>
       </CardText>
       <div className="Buttons">
-      <Button size="lg" >Edit Tourstop</Button>
-      <Button size="lg" color="danger" onClick={handleClick}>Delete Tourstop</Button>
+      <Button size="lg" color="primary"onClick={handleClick} >Edit Date</Button>
+      <Button size="lg" color="danger" onClick={handleClick2}>Delete Tourstop</Button>
       </div>
      
     </CardBody>
   </Card>
 
 
-   <ActivityList activities={data.activities}></ActivityList>
+
+    <div className="ActivityList">
+      <ActivityList activities={data.activities}></ActivityList>
+    </div>
+
+ 
   
 
         </div>

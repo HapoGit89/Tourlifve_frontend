@@ -8,8 +8,10 @@ import Home from './Components/Home/Home';
 import SignUpForm from './Components/SignUpForm/SignUpForm'
 import LoginForm from './Components/LoginForm/LoginForm';
 import TourList from './Components/TourList/TourList';
+import TourstopEditForm from './Components/TourstopEditForm/TourstopEditForm';
 import ActivityCreateForm from './Components/ActivityCreateForm/ActivityCreateForm';
 import TourstopDelete from './Components/TourstopDelete/TourstopDelete';
+import ActivityDelete from './Components/ActivityDelete/ActivityDelete';
 import TourCreateForm from './Components/TourCreateForm/TourCreateForm';
 import TourDetails from './Components/TourDetails/TourDetails';
 import TourstopDetails from './Components/TourstopDetails/Tourstopdetails';
@@ -96,6 +98,8 @@ function App() {
           <Route exact path="/tours/:id" element={<TourDetails/>}></Route>    
        
           <Route exact path="/tourstops/:id" element={<TourstopDetails/>}></Route>    
+
+          <Route exact path="/tourstops/:id/edit" element={<TourstopEditForm/>}></Route>    
         
           <Route exact path="/users/:username" element={<UserForm getUser = {getUser}/>}></Route>    
        
@@ -106,6 +110,8 @@ function App() {
           <Route exact path="/tours/:tour_id/tourstops/new" element={<TourstopCreateForm/>}></Route>    
 
           <Route exact path="/tourstops/:tourstop_id/activity" element={<ActivityCreateForm/>}></Route>     
+
+          <Route exact path="/tourstops/:tourstop_id/activity/:activity_id/delete" element={<ActivityDelete/>}></Route>     
         
           <Route exact path="/tourstops/:tourstop_id/delete" element={<TourstopDelete/>}></Route>     
          
