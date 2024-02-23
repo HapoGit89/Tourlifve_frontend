@@ -1,11 +1,12 @@
 
-import { Form, FormGroup, FormText, Label, Input, Button } from "reactstrap"
+import { Form, FormGroup, FormFeedback, Label, Input, Button } from "reactstrap"
 import { useState } from "react"
 import { TimeConversion } from "./TimeConversion"
 import "./ActivitySearchForm.css"
 
 function ActivitySearchForm({handleSearch}) {
 const [formData, setFormData] = useState({})
+const [errors, setErrors] = useState({})
 
 
 const handleChange = e => {
@@ -23,12 +24,33 @@ const handleChange = e => {
     [name]: value
   }));
   }
+  if (!!errors[name]){
+    setErrors({...errors, [name]: null})
+  }
 }
+
+ const validateForm = ()=>{
+      const {keyword, traveltime, mode} = formData
+      const newErrors = {}
+
+          if(!keyword || keyword == "") newErrors.keyword = "Please enter keyword"
+          if(!traveltime) newErrors.traveltime = "Please select a traveltime"
+          if(!mode) newErrors.mode= "Please select how you want to travel"
+         
+
+      return newErrors
+    }
+  
 
 
 const handleSubmit = (e)=>{
   e.preventDefault()
-  handleSearch(formData)
+  const formErrors = validateForm()
+  if(Object.keys(formErrors).length > 0){
+    setErrors(formErrors)
+  }
+  else{
+  handleSearch(formData)}
   
 }
 
@@ -55,8 +77,12 @@ placeholder="Keyword..."
 type="text"
 value={formData.keyword || ""}
 onChange={handleChange}
+invalid={!!errors.keyword}
 
 />
+<FormFeedback >
+     {errors.keyword}
+     </FormFeedback>
 </FormGroup>
 
 
@@ -71,7 +97,7 @@ placeholder="Traveltime"
 type="select"
 onChange={handleChange}
 value = {TimeConversion.SecondsToString(formData.traveltime)|| ""}
-
+invalid={!!errors.traveltime}
 
     >
       <option>
@@ -108,7 +134,9 @@ value = {TimeConversion.SecondsToString(formData.traveltime)|| ""}
 
 
 
-
+    <FormFeedback >
+     {errors.traveltime}
+     </FormFeedback>
 
 </FormGroup>
 <FormGroup>
@@ -123,6 +151,7 @@ placeholder="Mode of transport"
 type="select"
 value={formData.mode || ""}
 onChange={handleChange}
+invalid={!!errors.mode}
 
 
     > <option>
@@ -142,6 +171,11 @@ onChange={handleChange}
       </option>
      
       </Input>
+
+    <FormFeedback >
+     {errors.mode}
+     </FormFeedback>
+
 
 
 </FormGroup>
