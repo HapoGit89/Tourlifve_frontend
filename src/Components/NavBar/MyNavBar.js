@@ -12,7 +12,7 @@ function MyNavBar({user, logOut}) {
 
   if(user.token){  return (
     <div>
-      <Navbar expand="md">
+      <Navbar fixed="top" expand="md">
         <NavLink to="/" className="NavbarBrand">
           Tourlifve 🚌
         </NavLink>

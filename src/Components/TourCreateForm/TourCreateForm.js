@@ -1,4 +1,4 @@
-import { Form, FormGroup, Label, Input, Button } from "reactstrap"
+import { Form, FormGroup, Label, FormFeedback, Input, Button, FormText } from "reactstrap"
 import { useState,useContext } from "react";
 import { TourApi } from "../../api";
 import {useNavigate} from "react-router-dom"
@@ -9,6 +9,7 @@ import userContext from "../../userContext";
 function TourCreateForm (){
   // React controlled Form for User Login
   const [formData, setFormData] = useState("")
+  const [errors, setErrors]= useState({})
   const user = useContext(userContext)
   const navigate=useNavigate()
 
@@ -21,9 +22,14 @@ function TourCreateForm (){
       navigate("../../tours")
       window.location.reload()
     }
-    else{
-      console.log(res)
-      alert(`${res}`)
+    else if (res.response.data.error.message=="Tour in the past"){
+      alert(`Sorry, you can only create future or ongoing tours`)
+    }
+    else if (res.response.data.error.message.slice(0,9)=="Duplicate"){
+      alert(`Sorry, this tour already exists!`)
+    }
+    else {
+      alert ("Oops something went wrong. Try again or contact admin.")
     }
   }
 
@@ -34,16 +40,35 @@ function TourCreateForm (){
         ...fData,
         [name]: value
       }));
+      if (!!errors[name]){
+        setErrors({...errors, [name]: null})
+      }
     }
 
+    const validateForm = ()=>{
+      const {artist, title, startdate, enddate} = formData
+      const newErrors = {}
+
+          if(!artist || artist == "") newErrors.artist = "Please enter artist name"
+          if(!title || title == "") newErrors.title = "Please enter tour title"
+          if(!startdate) newErrors.startdate = "Please enter startdate"
+          if(!enddate) newErrors.enddate = "Please enter enddate"
+
+      return newErrors
+    }
   
 
   const handleSubmit = (e)=>{
     e.preventDefault()
+    const formErrors = validateForm()
+    if(Object.keys(formErrors).length > 0){
+      setErrors(formErrors)
+    }
+    else{
     createTour()
-     
-      
+    }
   }
+
     if(user.token){
     return(
       <div className="TourCreateForm">
@@ -55,52 +80,73 @@ function TourCreateForm (){
     </Label>
     <Input
       id="artist"
+      className={!!errors.artist && 'red-border'}
       name="artist"
       placeholder="Artist name..."
       type="text"
       value={formData.artist || ""}
       onChange={handleChange}
+     invalid={!!errors.artist}
+     
     />
+    <FormFeedback >
+     {errors.artist}
+     </FormFeedback>
   </FormGroup>
   <FormGroup>
-    <Label for="firstName" >
+    <Label for="title" >
       Title:
     </Label>
     <Input
-    className="Title"
+   className={!!errors.title && 'red-border'}
       id="title"
       name="title"
       placeholder="Tour title..."
       type="text"
       value={formData.title || ""}
       onChange={handleChange}
+      invalid={!!errors.title}
     />
+     <FormFeedback >
+     {errors.title}
+     </FormFeedback>
   </FormGroup>
   <FormGroup>
     <Label for="lastName">
       Startdate:
     </Label>
     <Input
+    className={!!errors.startdate && 'red-border'}
       id="startdate"
       name="startdate"
       placeholder="startdate"
       type="date"
       value={formData.startdate || ""}
       onChange={handleChange}
+      invalid={!!errors.startdate}
     />
+     <FormFeedback >
+     {errors.startdate}
+     </FormFeedback>
   </FormGroup>
+
   <FormGroup>
     <Label for="exampleEmail">
       Enddate:
     </Label>
     <Input
+    className={!!errors.enddate && 'red-border'}
       id="enddate"
       name="enddate"
       placeholder="enddate"
       type="date"
       value={formData.enddate || ""}
       onChange={handleChange}
+      invalid={!!errors.enddate}
     />
+     <FormFeedback >
+     {errors.enddate}
+     </FormFeedback>
   </FormGroup>
   {' '}
 

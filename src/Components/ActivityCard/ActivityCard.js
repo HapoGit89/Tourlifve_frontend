@@ -21,7 +21,7 @@ function ActivityCard ({activity}){
     return (
   <div className="ActivityCard">
 <Card
-  className="my-2"
+  className="my-2 text-center"
   color="dark"
   inverse
   style={{
