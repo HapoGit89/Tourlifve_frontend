@@ -1,4 +1,4 @@
-import { Form, FormGroup, Label, Input, Button } from "reactstrap"
+import { Form, FormGroup, FormFeedback, Label, Input, Button } from "reactstrap"
 import { useState,useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { TourApi } from "../../api";
@@ -10,6 +10,7 @@ import userContext from "../../userContext";
 function TourEditForm (){
   // React controlled Form for User Login
   const [formData, setFormData] = useState({})
+  const [errors, setErrors] = useState({})
   const user = useContext(userContext)
   const navigate=useNavigate()
   const {id} = useParams()
@@ -55,11 +56,32 @@ function TourEditForm (){
         ...fData,
         [name]: value
       }));
+      if (!!errors[name]){
+        setErrors({...errors, [name]: null})
+      }
+    }
+
+    const validateForm = ()=>{
+      const {artist, title, startdate, enddate} = formData
+      const newErrors = {}
+
+          if(!title || artist == "") newErrors.artist = "Please enter artist name"
+          if(!title || title == "") newErrors.title = "Please enter tour title"
+          if(!startdate) newErrors.startdate = "Please enter startdate"
+          if(!enddate) newErrors.enddate = "Please enter enddate"
+
+      return newErrors
     }
 
   const handleSubmit = (e)=>{
     e.preventDefault()
+    const formErrors = validateForm()
+    if(Object.keys(formErrors).length > 0){
+      setErrors(formErrors)
+    }
+    else{
     editTour()
+    }
      
       
   }
@@ -79,7 +101,13 @@ function TourEditForm (){
       type="text"
       value={formData.artist || ""}
       onChange={handleChange}
-    />
+      invalid={!!errors.artist}
+  
+     
+     />
+     <FormFeedback >
+      {errors.artist}
+      </FormFeedback>
   </FormGroup>
   <FormGroup>
     <Label for="firstName" >
@@ -93,7 +121,11 @@ function TourEditForm (){
       type="text"
       value={formData.title || ""}
       onChange={handleChange}
+      invalid={!!errors.title}
     />
+     <FormFeedback >
+     {errors.title}
+     </FormFeedback>
   </FormGroup>
 
   <FormGroup>
@@ -108,9 +140,10 @@ function TourEditForm (){
       type="date"
       value={formData.startdate || ""}
       onChange={handleChange}
-
-    
-    />
+      />
+      <FormFeedback >
+      {errors.startdate}
+      </FormFeedback>
   </FormGroup>
 
 
@@ -126,9 +159,11 @@ function TourEditForm (){
       type="date"
       value={formData.enddate || ""}
       onChange={handleChange}
-     
-      
-    />
+      invalid={!!errors.enddate}
+      />
+       <FormFeedback >
+       {errors.enddate}
+       </FormFeedback>
   </FormGroup>
 
 
