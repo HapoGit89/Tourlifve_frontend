@@ -1,7 +1,7 @@
 
 import { useContext, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Form, FormGroup, FormText, Label, Input, Button } from "reactstrap"
+import { Form, FormGroup, FormFeedback, Label, Input, Button } from "reactstrap"
 import SearchMap from "../SearchMap/SearchMap";
 import { TourApi } from "../../api";
 import "./TourstopCreateForm.css"
@@ -13,6 +13,7 @@ function TourstopCreateForm(data) {
   // React controlled Form for User Login
   const user = useContext(userContext)
   const [formData, setFormData] = useState({})
+  const [errors, setErrors] = useState({})
   const {tour_id} = useParams()
   const navigate = useNavigate()
 
@@ -71,7 +72,13 @@ const createTourstop = async (data) => {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
+    const formErrors = validateForm()
+    if(Object.keys(formErrors).length > 0){
+      setErrors(formErrors)
+    }
+    else{
     createTourstop(formData)
+    }
   }
 
   const handleChange = e => {
@@ -80,6 +87,22 @@ const createTourstop = async (data) => {
       ...fData,
       [name]: value
     }));
+    if (!!errors[name]){
+      setErrors({...errors, [name]: null})
+    }
+  }
+
+  const validateForm = ()=>{
+    const {name, country, city, street, date} = formData
+    const newErrors = {}
+
+        if(!name || name == "") newErrors.name = "Please chose a location by using the searchfield above the map"
+        if(!country || country == "") newErrors.country = "Please chose a location by using the searchfield above the map"
+        if(!date) newErrors.date= "Please enter date for tourstop"
+        if(!street || street == "") newErrors.street = "Please chose a location by using the searchfield above the map"
+        if(!city || city == "") newErrors.city = "Please chose a location by using the searchfield above the map"
+
+    return newErrors
   }
 
 
@@ -113,8 +136,12 @@ const createTourstop = async (data) => {
       placeholder="Location name..."
       type="text"
       value={formData.name || ""}
+      invalid={!!errors.name}
      
-    />
+      />
+      <FormFeedback >
+       {errors.name}
+       </FormFeedback>
   </FormGroup>
   <FormGroup>
     <Label for="firstName" >
@@ -127,21 +154,29 @@ const createTourstop = async (data) => {
       placeholder="Country.."
       type="text"
       value={formData.country|| ""}
-      
-    />
+      invalid={!!errors.country}
+     
+      />
+      <FormFeedback >
+       {errors.country}
+       </FormFeedback>
   </FormGroup>
   <FormGroup>
     <Label for="lastName">
       City:
     </Label>
     <Input
-      id="scity"
+      id="city"
       name="city"
       placeholder="city"
       type="text"
       value={formData.city|| ""}
+      invalid={!!errors.city}
      
-    />
+      />
+      <FormFeedback >
+       {errors.city}
+       </FormFeedback>
   </FormGroup>
   <FormGroup>
     <Label for="exampleEmail">
@@ -153,8 +188,12 @@ const createTourstop = async (data) => {
       placeholder="street"
       type="text"
       value={formData.street || ""}
-      
-    />
+      invalid={!!errors.street}
+     
+      />
+      <FormFeedback >
+       {errors.street}
+       </FormFeedback>
   </FormGroup>
   {' '}
   <FormGroup>
@@ -182,7 +221,12 @@ const createTourstop = async (data) => {
       type="date"
       value={formData.date || ""}
       onChange={handleChange}
-    />
+      invalid={!!errors.date}
+     
+      />
+      <FormFeedback >
+       {errors.date}
+       </FormFeedback>
   </FormGroup>
   {' '}
 
