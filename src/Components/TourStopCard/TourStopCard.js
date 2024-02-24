@@ -18,13 +18,16 @@ function TourStopCard ({tourstop}){
   <div className="TourStopCard">
 <Card
   className="my-2"
-  color="light"
  
   style={{
-    width: '40rem',
-    height:'4rem'
+    width: '35rem',
+    height:'4rem',
+     background: "linear-gradient(142deg, rgba(54,94,94,1) 3%, rgba(0,4,8,1) 97%)",
+     borderStyle: "solid",
+     borderColor: "white",
+     color: "white"
   }}>
-<CardBody>
+<CardBody style={{alignItems:"center"}}>
       <CardText>
         <p>{`${date} - ${tourstop.city} - ${tourstop.name}`} <Button style={{marginLeft: "5%"}} onClick={()=>navigate(`../tourstops/${tourstop.id}`)}>Details</Button></p>
       </CardText>

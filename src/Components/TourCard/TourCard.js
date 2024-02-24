@@ -28,12 +28,13 @@ function TourCard ({tour}){
           height:'18rem'
         }}
       >
-        <CardBody>
+        <CardBody style={{ border: "solid", borderColor: "white" ,background: "linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)"}}>
           <CardTitle >
             <h2>{tour.title}</h2>
-            <h4>Artist: {tour.artist}</h4>
-            <h5>Start: {start}</h5>
-           <h5>End: {end}</h5> 
+            <br></br>
+            <h4> <b>Artist:</b> {tour.artist}</h4>
+            <h5><b>Start:</b> {start}</h5>
+           <h5><b>End:</b> {end}</h5> 
           </CardTitle>
           <Button onClick={handleClick}
           style={{margin: "5%"}}>

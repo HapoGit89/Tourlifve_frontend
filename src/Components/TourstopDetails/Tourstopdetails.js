@@ -38,7 +38,7 @@ function TourstopDetails(){
 
     if(data && user.token && user.tours.filter((el)=>el.id == data.tour_id).length > 0){  //conditional render protects route 
       return (
-        <div className="TourDetails"> 
+    <div className="TourDetails"> 
            <Card
     className="my-2"
     color="secondary"
@@ -50,7 +50,7 @@ function TourstopDetails(){
     }}
   >
   
-    <CardBody>
+    <CardBody style={{display:"flex", flexDirection:"column"}}>
       <CardTitle tag="h2">
         Tourstop Details:
       </CardTitle>

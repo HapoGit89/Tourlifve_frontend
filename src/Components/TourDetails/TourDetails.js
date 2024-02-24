@@ -37,19 +37,21 @@ function TourDetails(){
 
     if(data  && user.token && data.user_id == user.id){  //conditional render protects route 
       return (
-    <div className="TourDetails"> 
+    <div className="TourDet"> 
         <div className="Tourinfo">
             <h1>Tour Details</h1>
+            <br></br>
             <h2>Title: {data.title}</h2>
             <h3>Artist: {data.artist}</h3>
             <h4>Start: {data.startdate.slice(0,10)}</h4>
             <h4>End: {data.enddate.slice(0,10)}</h4>
-            <div className="Buttons">
-              <Button size="lg" onClick={handleClick1}>Edit Tour</Button>
-              <Button size="lg" color="danger" onClick={handleClick2}>Delete Tour</Button>
+            <br></br>
+            <div className="TourButtons">
+              <Button size="lg" onClick={handleClick1}>Edit</Button>
+              <Button size="lg" color="danger" onClick={handleClick2}>Delete</Button>
             </div>
         </div>
-         <div>
+         <div className="Tourstops">
               <TourstopList tour_id={id} tourstops={data.tourstops}></TourstopList>
         </div>
     </div>

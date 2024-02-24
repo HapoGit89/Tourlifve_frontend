@@ -16,7 +16,7 @@ function TourList(){
       <div className="TourListPage">
             
       <Button className="AddTourButton"
-        color="secondary"
+        style={{background:"linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)", borderStyle: "solid", borderColor:"white"}}
         onClick={()=>navigate("./new")}
         size= "lg"
       >
@@ -37,7 +37,7 @@ function TourList(){
       <div className="TourListPage">
             
       <Button className="AddTourButton"
-        color="secondary"
+        style={{background:"linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)", borderStyle: "solid", borderColor:"white"}}
         onClick={()=>navigate("./new")}
         size = "lg"
       >
