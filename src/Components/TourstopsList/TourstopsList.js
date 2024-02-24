@@ -21,10 +21,10 @@ if(tourstops.length > 0){
 return (
     <div className="TourstopsList">
         <div className="Tourstopsheading">
-            <h1>Tourstops:</h1>
+            <h1 className="Tourstoplistheading">Tourstops:</h1>
             </div>
         {tourstops.map((el)=><TourStopCard tourstop={el}></TourStopCard>)}
-        <Button onClick={handleClick}>Add Tourstop</Button>
+        <Button size="lg" className="AddStopButton" onClick={handleClick}>Add Tourstop</Button>
     </div>
 )
 

@@ -15,7 +15,7 @@ function TourStopCard ({tourstop}){
 
   
     return (
-  <div className="TourStopCard">
+  <div className="TourStopC">
 <Card
   className="my-2"
  
@@ -27,12 +27,13 @@ function TourStopCard ({tourstop}){
      borderColor: "white",
      color: "white"
   }}>
-<CardBody style={{alignItems:"center"}}>
+    <CardBody style={{alignItems:"center"}}>
       <CardText>
-        <p>{`${date} - ${tourstop.city} - ${tourstop.name}`} <Button style={{marginLeft: "5%"}} onClick={()=>navigate(`../tourstops/${tourstop.id}`)}>Details</Button></p>
+        <p>{`${date} - ${tourstop.city} - ${tourstop.name}`} </p>
       </CardText>
     </CardBody>
   </Card>
+  <Button style={{marginLeft: "5%", height:"3rem" }} onClick={()=>navigate(`../tourstops/${tourstop.id}`)}>Details</Button>
 
 
   </div>

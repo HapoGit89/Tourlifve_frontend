@@ -8,3 +8,13 @@
     margin: 2%
 }
 
+.Tourstoplistheading {
+    margin-right: 20%;
+}
+
+.AddStopButton {
+    margin-top: 5%;
+    margin-right: 20%;
+    background: linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%);
+    
+}
