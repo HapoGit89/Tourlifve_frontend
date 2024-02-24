@@ -44,8 +44,7 @@ function TourEditForm (){
       window.location.reload()
     }
     else{
-      console.log(res)
-      alert(`${res}`)
+      alert(`${res.response.data.error.message}`)
     }
   }
 

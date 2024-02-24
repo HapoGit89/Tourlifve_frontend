@@ -43,7 +43,7 @@ function ActivityDelete(){
    
 
     const handleClick1 = ()=>{
-        navigate("./..")
+        navigate("./../../..")
       
     }
 
