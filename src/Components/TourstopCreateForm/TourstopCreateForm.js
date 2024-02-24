@@ -46,15 +46,6 @@ const createTourstop = async (data) => {
     location = res2.locations.filter((el)=>el.googleplaces_id==data.googleplaces_id)[0]
   }
 
-  else {
-    alert ( 'ooops something went wrong, please try again or contact support')
-  }
-
- 
-
-
- 
-
 
   const res3 = await TourApi.postTourstop({date: data.date, location_id: location.id, tour_id: Number(tour_id)})
 
@@ -64,6 +55,10 @@ const createTourstop = async (data) => {
   }
   else if ( res3.response.data.error.message.slice(0,18)==="Duplicate tourstop"){
   alert("Sorry that tourstop already exists!")
+}
+
+else if(res3.response.data.error.message=="Please select new date withing tour timeframe"){
+  alert(res3.response.data.error.message)
 }
   else {
     alert("oops something went wrong")
@@ -99,7 +94,6 @@ const createTourstop = async (data) => {
         if(!name || name == "") newErrors.name = "Please chose a location by using the searchfield above the map"
         if(!country || country == "") newErrors.country = "Please chose a location by using the searchfield above the map"
         if(!date) newErrors.date= "Please enter date for tourstop"
-        if(!street || street == "") newErrors.street = "Please chose a location by using the searchfield above the map"
         if(!city || city == "") newErrors.city = "Please chose a location by using the searchfield above the map"
 
     return newErrors

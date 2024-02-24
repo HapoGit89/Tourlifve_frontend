@@ -1,6 +1,6 @@
 
-import { useState, useCallback , useEffect, useRef} from 'react';
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+import { useState, useCallback , useRef} from 'react';
+import { GoogleMap, Marker ,useJsApiLoader } from '@react-google-maps/api';
 import "./ActivityMap.css"
 
 

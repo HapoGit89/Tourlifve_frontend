@@ -43,7 +43,7 @@ function TourDetails(){
             <h2>Title: {data.title}</h2>
             <h3>Artist: {data.artist}</h3>
             <h4>Start: {data.startdate.slice(0,10)}</h4>
-            <h4>Start: {data.enddate.slice(0,10)}</h4>
+            <h4>End: {data.enddate.slice(0,10)}</h4>
             <div className="Buttons">
               <Button size="lg" onClick={handleClick1}>Edit Tour</Button>
               <Button size="lg" color="danger" onClick={handleClick2}>Delete Tour</Button>
