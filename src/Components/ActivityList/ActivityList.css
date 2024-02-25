@@ -2,7 +2,8 @@
     color: whitesmoke;
     display: flex;
     flex-direction: row;
-    justify-self: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .ActivitiesHeading {

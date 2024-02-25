@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: myFont;
 }
 
 .App-logo {
@@ -43,4 +44,9 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+@font-face {
+  font-family: myFont;
+  src: url("./fonts/Ronysiswadi9Light-DO5K9.ttf");
 }

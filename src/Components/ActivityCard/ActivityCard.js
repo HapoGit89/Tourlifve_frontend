@@ -25,7 +25,7 @@ function ActivityCard ({activity}){
   color="dark"
   inverse
   style={{
-    width: '30rem',
+    width: '25rem',
     height:'18rem',
     padding: "3%",
     background: "linear-gradient(142deg, rgba(54,94,94,1) 3%, rgba(0,4,8,1) 97%)"
@@ -36,7 +36,7 @@ function ActivityCard ({activity}){
         <br></br>
         <h5><b>Distance: </b>{Math.floor(activity.traveltime/60)+1} minutes by {activity.travelmode}</h5>
         {<h5><b>Category:</b> {activity.category || "-"}</h5>}
-        <h5><a href={activity.googlemaps_link}><b>Googlemaps Link</b></a></h5>
+        <h5><a href={activity.googlemaps_link} target="_blank"><b>Googlemaps Link</b></a></h5>
       </CardText>
       <Button onClick={handleClick}>Delete</Button>
     </CardBody>
