@@ -61,12 +61,14 @@ function TourstopEditForm (){
   }
     if(user.token){
     return(
-      <div className="TourCreateForm">
-        <h1>Change Date for Tourstop at: {formData.name}</h1>
-        <Form  onSubmit={handleSubmit}>
-
+      <div className="TourStopE">
+      <div className="TourStopEditForm">
+    
+  <Form  onSubmit={handleSubmit}>
+        <h1>Change date for tourstop at:  <br></br> {formData.name}</h1>
   <FormGroup>
     <Label for="firstName" >
+   
       Date:
     </Label>
     <Input
@@ -81,11 +83,11 @@ function TourstopEditForm (){
     
     />
   </FormGroup>
-
-  <Button>
+<Button size="lg">
     Edit
   </Button>
 </Form>
+</div>
 </div>
         
     )}

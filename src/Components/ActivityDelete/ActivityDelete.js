@@ -29,7 +29,6 @@ function ActivityDelete(){
       
         const res = await TourApi.deleteActivity(activity_id)
        if(res.deleted){
-        console.log(res.deleted)
         alert(`Deleted Activity ${data.poi_name}`)
         navigate("./../../..")
         window.location.reload()
@@ -60,7 +59,8 @@ function ActivityDelete(){
       return (
     <div className="TourDeleteCard"> 
         <div className="Tourinfo">
-            <h1>Do your really want to delete Activity:</h1>
+            <h1>Do your really want to delete activity:</h1>
+            <br></br>
             <h1>{data.poi_name} ?</h1>
             <div className="Buttons">
                 <Button size="lg" color="primary" onClick={handleClick1}>No</Button>

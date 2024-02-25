@@ -6,8 +6,8 @@ import "./ActivityMap.css"
 
 
 const containerStyle = {
-  width: '100vh',
-  height: '55vh',
+  width: '80vh',
+  height: '80vh',
 };
 
 

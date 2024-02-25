@@ -88,7 +88,7 @@ const createActivity = async () => {
         alert(`Created Activity at ${selected.name} for tourstop ${tourstop_id}`)
         navigate("./../")
         }
-        else if ( res3.response.data.error.message.slice(0,13)==="Duplicate activity"){
+        else if ( res3.response.data.error.message.slice(0,18)==="Duplicate activity"){
         alert("Sorry that activity already exists!")
         }
         else {
@@ -105,14 +105,15 @@ const createActivity = async () => {
 
     <div className="ActivityMap">
             <ActivityMap handleMarkerClick={handleMarkerClick} key={results.length} results={results} location = {{location: {lat: tourstop.lat, lng: tourstop.lng}, name:tourstop.name}}></ActivityMap>
-            <ActivitySearchForm handleSearch={handleSearch} ></ActivitySearchForm>
+  
     </div>
 
    
 
       <div className="results">
-
-        <PoiResultCard createActivity={createActivity}key={selected.place_id} activity={selected}></PoiResultCard>
+      <PoiResultCard createActivity={createActivity}key={selected.place_id} activity={selected}></PoiResultCard>
+      <ActivitySearchForm handleSearch={handleSearch} ></ActivitySearchForm>
+       
         
 
       </div>

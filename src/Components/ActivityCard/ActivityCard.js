@@ -25,19 +25,20 @@ function ActivityCard ({activity}){
   color="dark"
   inverse
   style={{
-    width: '40rem',
-    height:'23rem',
-    padding: "5%"
+    width: '30rem',
+    height:'18rem',
+    padding: "3%",
+    background: "linear-gradient(142deg, rgba(54,94,94,1) 3%, rgba(0,4,8,1) 97%)"
   }}>
 <CardBody>
       <CardText>
-        <h2>{activity.name}</h2>
-        <h4>Address: {activity.address}</h4>
-        <h4>Distance: {Math.floor(activity.traveltime/60)+1} minutes by {activity.travelmode}</h4>
-        {<h4>Category: {activity.category || "-"}</h4>}
-        <h4><a href={activity.googlemaps_link}><b>Link</b></a></h4>
+        <h4><b>{activity.name}</b></h4>
+        <br></br>
+        <h5><b>Distance: </b>{Math.floor(activity.traveltime/60)+1} minutes by {activity.travelmode}</h5>
+        {<h5><b>Category:</b> {activity.category || "-"}</h5>}
+        <h5><a href={activity.googlemaps_link}><b>Googlemaps Link</b></a></h5>
       </CardText>
-      <Button onClick={handleClick}>Delete Activity</Button>
+      <Button onClick={handleClick}>Delete</Button>
     </CardBody>
   </Card>
 

@@ -1,17 +1,22 @@
-.TourDetails {
+.TourstopDetails {
     display: flex;
     flex-direction: column;
-    color: whitesmoke;
-    margin: 2%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10vh;
+    font-family: myFont;
 }
 
 
-.Buttons {
+.B {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    height: 3em;
-    width: auto;
-
+    justify-content:space-evenly;
 }
 
+
+
+@font-face {
+    font-family: myFont;
+    src: url("../../fonts/Ronysiswadi9Light-DO5K9.ttf");
+  }

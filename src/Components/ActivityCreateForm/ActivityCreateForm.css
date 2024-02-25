@@ -3,10 +3,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 10vh;
+    align-items: center;
+    margin-top: 5vh;
+    font-family: myFont;
 }
 
 
 .ActivityMap{
     margin: 2%
 }
+
+
+@font-face {
+    font-family: myFont;
+    src: url("../../fonts/Ronysiswadi9Light-DO5K9.ttf");
+  }

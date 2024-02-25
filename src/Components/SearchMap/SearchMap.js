@@ -6,7 +6,7 @@ import usePlacesAutocomplete, {getLatLng, getGeocode} from 'use-places-autocompl
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox';
 import "./SearchMap.css"
 const containerStyle = {
-  width: '100vh',
+  width: '80vh',
   height: '70vh',
 };
 

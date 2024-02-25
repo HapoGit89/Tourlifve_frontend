@@ -1,0 +1,27 @@
+
+
+.TourStopE{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+ 
+}
+
+.TourStopEditForm {
+
+    margin-top: 20vh;
+    font-family: myFont;
+    border-style: solid;
+    border-radius: 2%;
+    padding: 5%;
+    color: white;
+
+}
+
+
+
+
+@font-face {
+    font-family: myFont;
+    src: url("../../fonts/Ronysiswadi9Light-DO5K9.ttf");
+  }

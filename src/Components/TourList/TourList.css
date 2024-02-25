@@ -6,6 +6,7 @@
     margin-left: 5%;
     margin-right:5%;
     flex-wrap:wrap;
+    font-family: myFont;
 }
 
 .TourCard {
@@ -16,6 +17,7 @@
 
 .AddTourButton{
     margin-top: 5%;
+    font-family: myFont;
  
 }
 
@@ -24,4 +26,10 @@
     color:whitesmoke;
     font-size: x-large;
     margin: 5%;
+    font-family: myFont;
 }
+
+@font-face {
+    font-family: myFont;
+    src: url("../../fonts/Ronysiswadi9Light-DO5K9.ttf");
+  }

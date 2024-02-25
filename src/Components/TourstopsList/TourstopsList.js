@@ -32,11 +32,12 @@ return (
 else {
     return (
         <div className="TourstopsList">
-            <div className="Tourstopsheading">
+            <div className="Tourstoplistheading">
                 <h1>Tourstops:</h1>
+                <h3>No Tourstops yet, add some!</h3>
                 </div>
-            <h3>No Tourstops yet, add some!</h3>
-            <Button onClick={handleClick}>Add Tourstop</Button>
+            
+            <Button className="AddStopButton" size="lg" onClick={handleClick}>Add Tourstop</Button>
         </div>
     )
 }

@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-evenly;
     margin-top: 20vh;
+    font-family: myFont;
 
 }
 
@@ -24,3 +25,10 @@
     justify-content: space-evenly;
     margin: 10vh;
 }
+
+
+
+@font-face {
+    font-family: myFont;
+    src: url("../../fonts/Ronysiswadi9Light-DO5K9.ttf");
+  }

@@ -60,6 +60,7 @@ function TourDelete(){
     <div className="TourDeleteCard"> 
         <div className="Tourinfo">
             <h1>Do your really want to delete tour:</h1>
+            <br></br>
             <h1>{data.title} ?</h1>
             <div className="Buttons">
                 <Button size="lg" color="primary" onClick={handleClick1}>No</Button>
