@@ -31,8 +31,8 @@ function TourCard ({tour}){
         <CardBody style={{ border: "solid", borderColor: "white" ,background: "linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)"}}>
           <CardTitle >
             <h2>{tour.title}</h2>
-            <br></br>
             <h4> <b>Artist:</b> {tour.artist}</h4>
+            <br></br>
             <h5><b>Start:</b> {start}</h5>
            <h5><b>End:</b> {end}</h5> 
           </CardTitle>

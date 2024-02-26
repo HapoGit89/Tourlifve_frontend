@@ -1,8 +1,38 @@
-import { render, screen } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+// Smoke Test
+test('renders without crashing', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
 });
+
+
+// Snapshot Test
+it("matches snapshot", function() {
+  const {asFragment} = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+});
+
+it('renders Login Link ', ()=> {
+  const {getByText} = render(<App/>)
+  expect(getByText("Login")).toBeInTheDocument()
+})
+
+
+it('renders Login Form when clicking Login Link ', ()=> {
+  const {getByText, getByLabelText} = render(<App/>)
+ const button = getByText("Login")
+ fireEvent.click(button)
+ expect(getByLabelText("Password")).toBeInTheDocument()
+ expect(getByText("Login:")).toBeInTheDocument()
+})
+
+
+it('renders Signup Form when clicking Signup Link ', ()=> {
+  const {getByText, getByLabelText, debug} = render(<App/>)
+ const button = getByText("Signup")
+ fireEvent.click(button)
+ expect(getByLabelText("Password:")).toBeInTheDocument()
+ expect(getByText("Sign Up For Tourlifve:")).toBeInTheDocument()
+})
