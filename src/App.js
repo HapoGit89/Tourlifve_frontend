@@ -84,7 +84,7 @@ function App() {
     <div className="App">
       <userContext.Provider value={user}>
    <BrowserRouter>
-        <MyNavBar user={user} logOut={logOut}/>
+        <MyNavBar logOut={logOut}/>
         <Routes>
 
           <Route exact path="/signup" element={<SignUpForm logIn={logIn}/>}></Route>    

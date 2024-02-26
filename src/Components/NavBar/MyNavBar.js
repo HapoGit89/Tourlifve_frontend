@@ -1,11 +1,13 @@
-import React from "react";
+import {useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
+import userContext from "../../userContext";
 import "./MyNavBar.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function MyNavBar({user, logOut}) {
+function MyNavBar({logOut}) {
+  const user = useContext(userContext)
 
   // Navbar for App
 
