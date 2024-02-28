@@ -18,7 +18,6 @@ function ActivityCreateForm(data) {
   const [selected, setSelected] = useState({})
   const {tourstop_id} = useParams()
   const navigate = useNavigate()
-
   setKey(process.env.REACT_APP_API_KEY)
 
    // get tourstop info from TourApi and store in state
@@ -118,7 +117,7 @@ const createActivity = async () => {
 
       </div>
 
-    </div>
+    </div> 
 
 
 

@@ -103,7 +103,7 @@ invalid={!!errors.traveltime}
       <option>
         Please Select
       </option>
-      <option>
+      <option value="5 min">
         5 min
       </option>
       <option>
@@ -157,7 +157,7 @@ invalid={!!errors.mode}
     > <option>
       Please Select
     </option>
-      <option>
+      <option value="walking">
         walking
       </option>
       <option>
@@ -185,7 +185,7 @@ invalid={!!errors.mode}
 {' '}
 
 
-<Button>
+<Button data-testid="SearchButton">
 Search for places
 </Button>
 </Form>

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render,screen } from '@testing-library/react';
 import TourList from './TourList';
 import userContext from '../../userContext';
 import { BrowserRouter } from 'react-router-dom';
@@ -29,4 +29,17 @@ it('matches Snapshot', () => {
            </BrowserRouter>
       )
       expect(asFragement).toMatchSnapshot()
+});
+
+it('show add button', () => {
+    const user = {username: "hannes", token: "ajshajhjshajhjhs", tours: []}
+    const {} = render(<BrowserRouter>
+            <userContext.Provider value={user}>
+            <TourList/>
+            </userContext.Provider>
+           </BrowserRouter>
+      )
+
+      expect(screen.getByText("Create New Tour ...")).toBeInTheDocument()
+     
 });
