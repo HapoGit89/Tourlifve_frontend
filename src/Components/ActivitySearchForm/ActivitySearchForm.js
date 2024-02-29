@@ -1,4 +1,3 @@
-
 import { Form, FormGroup, FormFeedback, Label, Input, Button } from "reactstrap"
 import { useState } from "react"
 import { TimeConversion } from "./TimeConversion"
@@ -31,12 +30,12 @@ function ActivitySearchForm({ handleSearch }) {
     }
   }
 
-  // Check for data and if add error message to error array
+  // Check for data and if add error message to error object
   const validateForm = () => {
     const { keyword, traveltime, mode } = formData
     const newErrors = {}
 
-    if (!keyword || keyword == "") newErrors.keyword = "Please enter keyword"
+    if (!keyword || keyword === "") newErrors.keyword = "Please enter keyword"
     if (!traveltime) newErrors.traveltime = "Please select a traveltime"
     if (!mode) newErrors.mode = "Please select how you want to travel"
 
