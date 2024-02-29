@@ -14,6 +14,9 @@ it("matches snapshot", function() {
   expect(asFragment()).toMatchSnapshot();
 });
 
+
+// specialized render tests
+
 it('renders Login Link ', ()=> {
   const {getByText} = render(<App/>)
   expect(getByText("Login")).toBeInTheDocument()

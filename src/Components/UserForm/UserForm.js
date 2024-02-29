@@ -7,13 +7,13 @@ import userContext from "../../userContext";
 import { handleError } from "./HandleSignUpErrors";
 
 
+// React controlled Form for User data edit
 function UserForm({ getUser }) {
-  // React controlled Form for updating UserData
   const [formData, setFormData] = useState("")
   const { username } = useParams()
   const userdata = useContext(userContext)
 
-  // Update Userdata via JoblyApi.patchUser func
+  // Update Userdata via TourApi
   const patchUser = async (data) => {
     const res = await TourApi.patchUser(userdata.username, data)
     if (res.user && res.user.username) {
@@ -25,6 +25,7 @@ function UserForm({ getUser }) {
     }
   }
 
+  // handle Form input
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData(fData => ({
@@ -33,6 +34,7 @@ function UserForm({ getUser }) {
     }));
   }
 
+  // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!formData) {
@@ -42,18 +44,15 @@ function UserForm({ getUser }) {
     setFormData("")
   }
 
+
   if (userdata.token && userdata.username == username) {
     return (
       <div className="UserForm">
         <h1>Details for {userdata.username}</h1>
         <Form onSubmit={handleSubmit}>
-
-        
-         
           <FormGroup>
             <Label
               for="exampleEmail"
-
             >
               Email:
             </Label>
@@ -67,14 +66,11 @@ function UserForm({ getUser }) {
             />
           </FormGroup>
           {' '}
-
-
           <Button>
             Save Changes
           </Button>
         </Form>
       </div>
-
     )
   }
 

@@ -27,8 +27,6 @@ export class TourApi {
     } catch (err) {
       
       return err
-      // let message = err.response.data.error.message;
-      // throw Array.isArray(message) ? message : [message];
     }
   }
 

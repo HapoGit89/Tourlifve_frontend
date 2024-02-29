@@ -38,7 +38,7 @@ function ActivityList({ activities }) {
                 <div className="ActivitiesHeading">
                     <h1>Your Saved Places:</h1>
                 </div>
-                <div className="ActivitiesList">
+                <div className="ActivitiesListEmpty">
                     <h3>No Places yet, add some!</h3>
                 </div>
                 <Button style={{ marginBottom: "2%", background: "linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)" }} onClick={handleClick} size="lg">Find And Add Places</Button>

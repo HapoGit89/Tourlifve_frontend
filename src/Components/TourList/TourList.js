@@ -1,4 +1,4 @@
-import { React, useContext, useEffect } from "react"
+import { React, useContext } from "react"
 import "./TourList.css"
 import userContext from "../../userContext"
 import TourCard from "../TourCard/TourCard"
@@ -27,7 +27,7 @@ function TourList() {
     )
   }
 
-  if (user.token) {  
+  if (user.token) {
     return (
       <div className="TourListPage">
         <Button className="AddTourButton"

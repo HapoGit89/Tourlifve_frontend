@@ -31,7 +31,9 @@ it('matches Snapshot', () => {
       expect(asFragement).toMatchSnapshot()
 });
 
-it('show add button', () => {
+//
+
+it('shows add button', () => {
     const user = {username: "hannes", token: "ajshajhjshajhjhs", tours: []}
     const {} = render(<BrowserRouter>
             <userContext.Provider value={user}>
