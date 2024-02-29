@@ -95,7 +95,7 @@ const PlacesAutoComplete = ({ setSelected, handleMapOut }) => {
     <Combobox onSelect={handleSelect}>
       <ComboboxInput value={value} disabled={!ready} placeholder="Search for a place..." className="comboIn" onChange={e => setValue(e.target.value)} />
       <ComboboxPopover>
-        <ComboboxList className='comboList' style={{ background: "white" }}>{status === "OK" && data.map(({ place_id, description }) => <ComboboxOption className='comboOpt' key={place_id} value={description} />)}</ComboboxList>
+        <ComboboxList className='comboList'>{status === "OK" && data.map(({ place_id, description }) => <ComboboxOption className='comboOpt' key={place_id} value={description} />)}</ComboboxList>
       </ComboboxPopover>
     </Combobox>
   )

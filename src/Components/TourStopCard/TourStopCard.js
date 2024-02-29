@@ -12,22 +12,15 @@ function TourStopCard({ tourstop }) {
   return (
     <div className="TourStopC">
       <Card
-        className="my-2"
-        style={{
-          width: '35rem',
-          height: '4rem',
-          background: "linear-gradient(142deg, rgba(54,94,94,1) 3%, rgba(0,4,8,1) 97%)",
-          borderStyle: "solid",
-          borderColor: "white",
-          color: "white"
-        }}>
-        <CardBody style={{ alignItems: "center" }}>
+        className="my-2 TCard"
+       >
+        <CardBody className="cardBod">
           <CardText>
             <p>{`${date} - ${tourstop.city} - ${tourstop.name}`} </p>
           </CardText>
         </CardBody>
       </Card>
-      <Button style={{ marginLeft: "5%", height: "3rem" }} onClick={() => navigate(`../tourstops/${tourstop.id}`)}>Details</Button>
+      <Button className="DetailBut" onClick={() => navigate(`../tourstops/${tourstop.id}`)}>Details</Button>
     </div>
   )
 

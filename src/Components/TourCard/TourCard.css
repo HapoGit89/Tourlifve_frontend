@@ -1,0 +1,14 @@
+.TourC{
+    width: 18rem;
+    height: 18rem
+}
+
+.CardBod {
+border: solid;
+border-color: white;
+background: linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)
+}
+
+.But {
+    margin: 5%
+}

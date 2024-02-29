@@ -26,7 +26,7 @@ function ActivityList({ activities }) {
                 <div className="ActivitiesList">
                     {activities.map((el) => <ActivityCard activity={el}></ActivityCard>)}
                 </div>
-                <Button style={{ marginBottom: "2%", background: "linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)" }} onClick={handleClick} size="lg">Find And Add Places</Button>
+                <Button className="AddButton"  onClick={handleClick} size="lg">Find And Add Places</Button>
             </>
         )
     }
@@ -41,7 +41,7 @@ function ActivityList({ activities }) {
                 <div className="ActivitiesListEmpty">
                     <h3>No Places yet, add some!</h3>
                 </div>
-                <Button style={{ marginBottom: "2%", background: "linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)" }} onClick={handleClick} size="lg">Find And Add Places</Button>
+                <Button className="AddButton" onClick={handleClick} size="lg">Find And Add Places</Button>
             </>
         )
     }

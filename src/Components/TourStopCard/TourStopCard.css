@@ -6,3 +6,22 @@
     word-wrap: break-word;
     
 }
+
+.cardBod {
+
+    align-items: center;
+
+}
+.DetailBut {
+ margin-left: 5%;
+height: 3rem
+}
+
+.TCard {
+    width: 35rem;
+    height: 4rem;
+    background: linear-gradient(142deg, rgba(54,94,94,1) 3%, rgba(0,4,8,1) 97%);
+    border-style: solid;
+    border-color: white;
+    color: white
+}

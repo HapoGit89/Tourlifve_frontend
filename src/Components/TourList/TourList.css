@@ -17,7 +17,9 @@
 
 .AddTourButton{
     margin-top: 5%;
-    font-family: myFont;
+    background: linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%);
+    border-style: solid;
+    border-color: white
  
 }
 

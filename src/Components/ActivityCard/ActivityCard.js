@@ -16,15 +16,10 @@ function ActivityCard({ activity }) {
   return (
     <div className="ActivityCard">
       <Card
-        className="my-2 text-center"
+        className="my-2 text-center ActCardIn"
         color="dark"
         inverse
-        style={{
-          width: '25rem',
-          height: '18rem auto',
-          padding: "3%",
-          background: "linear-gradient(142deg, rgba(54,94,94,1) 3%, rgba(0,4,8,1) 97%)"
-        }}>
+        >
         <CardBody>
           <CardText>
             <h5><b>{activity.name}</b></h5>

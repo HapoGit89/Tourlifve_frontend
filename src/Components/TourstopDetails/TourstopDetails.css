@@ -14,4 +14,18 @@
     justify-content:space-evenly;
 }
 
+.CardBod {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.TourstopC{
+    display: flex;
+    width: 65rem;
+    height: 20rem;
+    justify-content: flex-start;
+    background: linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%);
+    border-color: white;
+}
 

@@ -13,13 +13,8 @@ function PoiResultCard(props) {
   return (
     <div className="PoiResultsCard">
       <Card
-        className="my-2"
+        className="my-2 PoiCardBody"
         inverse
-        style={{
-          width: '70vh',
-          height: '50vh',
-          background: "linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)"
-        }}
       >
         <CardHeader>
           <h3>Your Selected Place:</h3>
@@ -29,7 +24,7 @@ function PoiResultCard(props) {
             {props.activity.name}
           </CardTitle>
           <CardText>
-            <ul className="Details" style={{ listStyleType: "none" }}>
+            <ul className="Details">
               <li><h5><b>Adress:</b>{props.activity.address}</h5></li>
               <li><h5><b>Distance:</b> {props.activity.distance}</h5></li>
               <li><h5><b>Traveltime:</b> {props.activity.mode}  {props.activity.duration_text} </h5></li>

@@ -54,7 +54,6 @@ function ActivitySearchForm({ handleSearch }) {
     else {
       handleSearch(formData)
     }
-
   }
 
 

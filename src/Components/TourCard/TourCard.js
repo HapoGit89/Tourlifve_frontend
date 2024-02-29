@@ -1,5 +1,6 @@
-import { Card, CardBody, CardHeader, CardTitle, Button } from "reactstrap";
+import { Card, CardBody,CardTitle, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import "./TourCard.css"
 
 // user reactstrap Card component to render tour data
 function TourCard({ tour }) {
@@ -15,15 +16,11 @@ function TourCard({ tour }) {
 
   return (
     <Card
-      className="my-2"
+      className="my-2 TourC"
       color="dark"
       inverse
-      style={{
-        width: '18rem',
-        height: '18rem'
-      }}
     >
-      <CardBody style={{ border: "solid", borderColor: "white", background: "linear-gradient(142deg, rgba(36,62,62,1) 3%, rgba(0,4,8,1) 97%)" }}>
+      <CardBody className="CardBod" >
         <CardTitle >
           <h2>{tour.title}</h2>
           <h4> <b>Artist:</b> {tour.artist}</h4>
@@ -31,8 +28,8 @@ function TourCard({ tour }) {
           <h5><b>Start:</b> {start}</h5>
           <h5><b>End:</b> {end}</h5>
         </CardTitle>
-        <Button onClick={handleClick}
-          style={{ margin: "5%" }}>
+        <Button className= "But"onClick={handleClick}
+        >
           Details
         </Button>
       </CardBody>
