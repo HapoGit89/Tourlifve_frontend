@@ -16,7 +16,7 @@ function TourStopCard({ tourstop }) {
        >
         <CardBody className="cardBod">
           <CardText>
-            <p>{`${date} - ${tourstop.city} - ${tourstop.name}`} </p>
+            {`${date} - ${tourstop.city} - ${tourstop.name}`} 
           </CardText>
         </CardBody>
       </Card>

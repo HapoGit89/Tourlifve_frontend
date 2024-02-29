@@ -125,6 +125,7 @@ const handleMapOut = (data) => {
               type="text"
               value={formData.name || ""}
               invalid={!!errors.name}
+              readOnly
             />
             <FormFeedback >
               {errors.name}
@@ -142,6 +143,7 @@ const handleMapOut = (data) => {
               type="text"
               value={formData.country || ""}
               invalid={!!errors.country}
+              readOnly
             />
             <FormFeedback >
               {errors.country}
@@ -158,6 +160,7 @@ const handleMapOut = (data) => {
               type="text"
               value={formData.city || ""}
               invalid={!!errors.city}
+              readOnly
             />
             <FormFeedback >
               {errors.city}
@@ -174,6 +177,7 @@ const handleMapOut = (data) => {
               type="text"
               value={formData.street || ""}
               invalid={!!errors.street}
+              readOnly
             />
             <FormFeedback >
               {errors.street}
@@ -190,6 +194,7 @@ const handleMapOut = (data) => {
               placeholder="number"
               type="text"
               value={formData.housenumber || ""}
+              readOnly
             />
           </FormGroup>
           {' '}

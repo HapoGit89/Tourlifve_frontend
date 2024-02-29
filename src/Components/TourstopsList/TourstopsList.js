@@ -24,7 +24,7 @@ function TourstopList({ tourstops, tour_id }) {
                 <div className="Tourstopsheading">
                     <h1 className="Tourstoplistheading">Tourstops:</h1>
                 </div>
-                {tourstops.map((el) => <TourStopCard tourstop={el}></TourStopCard>)}
+                {tourstops.map((el) => <TourStopCard key={el.id} tourstop={el}></TourStopCard>)}
                 <Button size="lg" className="AddStopButton" onClick={handleClick}>Add Tourstop</Button>
             </div>
         )
