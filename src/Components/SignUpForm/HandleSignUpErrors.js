@@ -1,3 +1,5 @@
+
+// helper to handle standard SignUp errors
 export const handleError = (res)=>{
     const error=res.response.data.error.message
 

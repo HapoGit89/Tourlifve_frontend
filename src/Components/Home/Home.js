@@ -8,13 +8,14 @@ function Home (){
     const user = useContext(userContext)
 
     if (user && user.token){
-    return (
-    <div className="WelcomeMessage"> 
-         <h1>Welcome {user.username}, this is Tourlifve 🚌 
-         </h1>
-         <h2>Click TOURS to start!</h2>
-    </div>
-    )}
+        return (
+            <div className="WelcomeMessage"> 
+                <h1>Welcome {user.username}, this is Tourlifve 🚌 
+                </h1>
+                <h2>Click TOURS to start!</h2>
+            </div>
+        )
+    }
 
     else {
         return (

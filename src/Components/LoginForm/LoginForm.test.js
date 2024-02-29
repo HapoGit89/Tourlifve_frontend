@@ -26,7 +26,7 @@ it('matches Snapshot', () => {
     });
 
 
-// Testing if Login Form works
+// Testing if LoginForm works
 
 it('logs in user', async()=>{
     const alertMock = jest.spyOn(window,'alert').mockImplementation(); 
@@ -44,7 +44,6 @@ it('logs in user', async()=>{
      // these credentials are not registered, we just want to test the form, not the login func
     fireEvent.click(subbutton)
     await waitFor(()=>expect(alertMock).toHaveBeenCalled()) // checks if alert was called as result of form submit
-
   
 })
 

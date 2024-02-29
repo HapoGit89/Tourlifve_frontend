@@ -11,7 +11,6 @@ function MyNavBar({logOut}) {
 
   // Navbar for App
 
-
   if(user.token){  return (
     <div>
       <Navbar fixed="top" expand="md">

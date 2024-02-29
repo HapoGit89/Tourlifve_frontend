@@ -1,6 +1,6 @@
 import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import { useState } from "react";
-import { TourApi} from "../../api"
+import { TourApi } from "../../api"
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css"
 
@@ -22,6 +22,7 @@ function LoginForm({ logIn }) {
     }
   }
 
+  // form control func
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData(fData => ({
@@ -30,6 +31,7 @@ function LoginForm({ logIn }) {
     }));
   }
 
+  // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault()
     Login()
@@ -73,7 +75,6 @@ function LoginForm({ logIn }) {
         </Button>
       </Form>
     </div>
-
   )
 }
 

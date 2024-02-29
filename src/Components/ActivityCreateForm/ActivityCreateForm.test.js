@@ -52,6 +52,8 @@ it('matches Snapshot', () => {
 });
 
 
+// specialized Tests
+
 it('renders Search Form and Form', async() => {
   const ts = tourstop
     TourApi.getTourstopDetails = jest.fn()
