@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+**Capstone Project 2: Tourlifve**  
+live at https://defiant-faucet.surge.sh/  
+Github:  [backend](https://github.com/HapoGit89/Tourlifve_backend.git)  [frontend](https://github.com/HapoGit89/Tourlifve_frontend.git)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This web app is called Tourlifve and wants to help frequent travellers by letting them custom search for interesting places nearby their stays.
 
-## Available Scripts
+The features are:
 
-In the project directory, you can run:
+- SignIn and LogIn for users
+- Tour planning featuring a GoogleMap based search 
+- Nearby place search featuring a GoogleMap based form
+- User Profile Edit
+- Tour and Place Edits
 
-### `npm start`
+I developed this app because the following scenario is something I frequently encounter when working as touring musician: When staying at a place in a new city, one option to search for interesting places is Google Maps. However, this option lacks the ability to search for places by traveltime and mode of travel, two limited resources when on tour. Also I wanted to be able to save interesting places in relation to the location I am staying in. Tourlifve solves these problems.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A standard user flow could look like:
 
-### `npm test`
+Visiting the home route, users get prompted to sign in or log in. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After authentification, it is possible to create a new project/tour by clicking the tour navigation link.
+Having created a tour, users can now enter the locations they will stay at on that tour/journey.
+For each location it is possible to search for an save interesting places nearby by using a search query, traveltime budget and travelmode.
 
-### `npm run build`
+When on tour/on a journey, the user accesses tourlifve and can look at list of places he/she saved for each location.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For the location and places search I used the GoogleMaps API with the places library and its npm react wrappers. In order to run the frontend and backend, an own Google API key is required and should be put as envorinoment var.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Teck Stack:**  
+HTML  
+CSS/React Bootstrap  
+Node.js/Express  
+React
 
-### `npm run eject`
+**Run app with:**  
+backend: node server.js  
+frontend: npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Run tests with:**  
+backend: jest -i  
+frontend: npm test
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Unfortunately, this app is not mobile ready yet. That is to come in the next weeks/months
