@@ -1,5 +1,5 @@
 
-import { useState, useCallback , useRef} from 'react';
+import { useState, useCallback , useLayoutEffect, useRef} from 'react';
 import { GoogleMap, Marker ,useJsApiLoader } from '@react-google-maps/api';
 import "./ActivityMap.css"
 
@@ -14,6 +14,30 @@ const libraries = ["places"]
 
 // Google Map Component rendering the location from props
 function ActivityMap(props) {
+  const [size, setSize] = useState({   
+    width: '40vw',
+    height: '90vh',
+    });
+
+    useLayoutEffect(() => {
+      function updateSize() {
+        if(window.innerWidth<1000){
+        setSize({   
+          width: '80vw',
+          height: '30vh',
+          });}
+      else {
+        setSize({   
+          width: '40vw',
+          height: '70vh',
+          })
+      }}
+    
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+ 
 
 // this code is taken from the Google Map Docs
   
@@ -42,7 +66,7 @@ const myRef = useRef()
    <div>
    
       <GoogleMap
-        mapContainerStyle={containerStyle}
+        mapContainerStyle={size}
         center={props.location.location}
         zoom={12}
         onUnmount={onUnmount}

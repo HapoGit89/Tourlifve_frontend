@@ -2,11 +2,29 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top:20vh;
-    margin-left: 60vh;
-    width: 80vh;
+    margin-top:17vh;
+    margin-left: 34vw;
+    width: 60vh;
     border-style: solid;
     border-radius: 2%;
     padding: 5%;
     color: white;
 }
+
+
+
+@media only screen and (max-width: 1000px) {
+    .SignUpForm{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 10%;
+        margin-top: 20vh;
+        margin-bottom: 10vh;
+        width: 80%;
+        border-style: solid;
+        border-radius: 2%;
+        padding: 5%;
+        color: white;
+    }
+  }

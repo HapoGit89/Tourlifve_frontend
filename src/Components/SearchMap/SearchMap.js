@@ -1,14 +1,19 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useLayoutEffect} from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import usePlacesAutocomplete, { getLatLng, getGeocode } from 'use-places-autocomplete';
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox';
 import "./SearchMap.css"
 
 // container  and center for GoogleMap 
-const containerStyle = {
-  width: '80vh',
-  height: '70vh',
-};
+
+
+
+// media query with conditional container Style
+
+let containerStyle = {   
+width: '40vw',
+height: '70vh',
+}
 
 let center = {
   lat: 53.745,
@@ -19,6 +24,33 @@ let center = {
 const libraries = ["places"]
 
 function SearchMap({ handleMapOut }) {
+  const [size, setSize] = useState({   
+    width: '40vw',
+    height: '70vh',
+    });
+
+    useLayoutEffect(() => {
+      function updateSize() {
+        if(window.innerWidth<1000){
+        setSize({   
+          width: '75vw',
+          height: '50vh',
+          });}
+      else {
+        setSize({   
+          width: '40vw',
+          height: '70vh',
+          })
+      }}
+    
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+ 
+
+
+  
 
   // this code is from Google Map Docs
   const { isLoaded } = useJsApiLoader({
@@ -43,7 +75,7 @@ function SearchMap({ handleMapOut }) {
       </div>
 
       <GoogleMap
-        mapContainerStyle={containerStyle}
+        mapContainerStyle={size}
         center={center}
         zoom={6}
         onUnmount={onUnmount}

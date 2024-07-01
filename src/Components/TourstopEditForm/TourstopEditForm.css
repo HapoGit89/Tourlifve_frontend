@@ -11,10 +11,30 @@
 
     margin-top: 20vh;
     font-family: myFont;
+    font-size: 2vw;
     border-style: solid;
     border-radius: 2%;
     padding: 5%;
     color: white;
 
 }
+
+@media only screen and (max-width: 1000px){
+
+    .TourStopEditForm {
+
+        margin-top: 30vh;
+        font-family: myFont;
+        width: 80%;
+        border-style: solid;
+        border-radius: 2%;
+        padding: 5%;
+        margin-left: 2%;
+        color: white;
+    
+
+}
+
+}
+
 

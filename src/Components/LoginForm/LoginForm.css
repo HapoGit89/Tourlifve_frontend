@@ -3,15 +3,28 @@
     justify-content: center;
     flex-direction: column;
     margin-top:20vh;
-    margin-left: 60vh;
-    width: 80vh;
+    margin-left: 34vw;
+    width: 60vh;
     border-style: solid;
     border-radius: 2%;
     padding: 5%;
     color: white;
 
-
-   
-   
-
 }
+
+
+
+@media only screen and (max-width: 1000px) {
+    .LogInForm{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-top:20vh;
+        margin-left: 10%;
+        width: 80%;
+        border-style: solid;
+        border-radius: 2%;
+        padding: 5%;
+        color: white;
+    }
+  }

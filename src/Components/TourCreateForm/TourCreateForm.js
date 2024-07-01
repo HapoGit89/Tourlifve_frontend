@@ -71,6 +71,7 @@ function TourCreateForm() {
 
   if (user.token) {
     return (
+      <div className="container">
       <div className="TourCreateForm">
         <h1>Create a new tour:</h1>
         <Form onSubmit={handleSubmit}>
@@ -153,6 +154,7 @@ function TourCreateForm() {
             Create
           </Button>
         </Form>
+      </div>
       </div>
 
     )

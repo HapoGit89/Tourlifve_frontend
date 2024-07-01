@@ -108,9 +108,10 @@ const handleMapOut = (data) => {
 
   if (user.token) {
     return (<div className="TourstopCreateForm">
+      <div className="Map">
 
       <SearchMap handleMapOut={handleMapOut}></SearchMap>
-
+      </div>
       <div className="resultForm">
         <Form onSubmit={handleSubmit}>
           <h1>  Your Selected Location:</h1>

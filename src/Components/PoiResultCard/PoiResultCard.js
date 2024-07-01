@@ -19,7 +19,7 @@ function PoiResultCard(props) {
         <CardHeader>
           <h3>Your Selected Place:</h3>
         </CardHeader>
-        <CardBody>
+        <CardBody class="Card">
           <CardTitle tag="h3">
             {props.activity.name}
           </CardTitle>

@@ -36,7 +36,7 @@ function TourDetails() {
   if (data && user.token && data.user_id == user.id) {  //conditional render protects route 
     return (
       <div className="TourDet">
-        <div className="Tourinfo">
+        <div className="TourInfo">
           <h1>Tour Details</h1>
           <br></br>
           <h2>Title: {data.title}</h2>

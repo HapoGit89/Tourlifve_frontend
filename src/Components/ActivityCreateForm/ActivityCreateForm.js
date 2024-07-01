@@ -111,8 +111,9 @@ function ActivityCreateForm() {
       </div>
 
       <div className="results">
-        <PoiResultCard createActivity={createActivity} key={selected.place_id} activity={selected}></PoiResultCard>
-        <ActivitySearchForm handleSearch={handleSearch} ></ActivitySearchForm>
+      <ActivitySearchForm handleSearch={handleSearch} ></ActivitySearchForm>
+      <PoiResultCard createActivity={createActivity} key={selected.place_id} activity={selected}></PoiResultCard>
+       
       </div>
 
     </div>

@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin: 10vh;
+    margin: 10vw;
 }
 
 
@@ -32,3 +32,33 @@
     font-family: myFont;
     src: url("../../fonts/Ronysiswadi9Light-DO5K9.ttf");
   }
+
+
+  @media only screen and (max-width: 980px){
+
+    .Tourinfo {
+        color: whitesmoke;
+        border-style: solid;
+        border-radius: 4%;
+        height: 60vh;
+        max-height: 400px;
+        width:35rem;
+        padding: 3rem;
+        width: 80vw;
+        font-size: smaller;
+    }
+
+    .Buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: 6vw;
+    }
+    
+
+    
+    
+    }
+    
+    
+    

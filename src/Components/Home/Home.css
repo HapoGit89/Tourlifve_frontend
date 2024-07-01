@@ -7,11 +7,27 @@
     display:flex;
     flex-direction: column;
     font-family: myFont;
-
 }
 
 
 @font-face {
     font-family: myFont;
     src: url("../../fonts/Ronysiswadi9Light-DO5K9.ttf");
+  }
+
+
+
+  @media only screen and (max-width: 893px) {
+    .WelcomeMessage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 35vh;
+        margin-left: 10vh;
+        margin-right: 10vh;
+        display:flex;
+        flex-direction: column;
+        font-family: myFont;
+    
+    }
   }

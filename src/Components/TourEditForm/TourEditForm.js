@@ -88,7 +88,7 @@ function TourEditForm() {
   }
   if (user.token) {
     return (
-      <div className="TourCreateForm">
+      <div className="TourEditForm">
         <h1>Edit Tour:</h1>
         <Form onSubmit={handleSubmit}>
           <FormGroup>

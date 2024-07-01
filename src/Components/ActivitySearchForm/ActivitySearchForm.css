@@ -4,10 +4,29 @@
     justify-content:space-around;
     flex-direction: column;
     height:auto;
-    width: 70vh;
     border-style: solid;
     border-radius: 2%;
     color: white;
     padding: 2%;
-    margin-top: 4%;
+    margin-top: 2%;
+}
+
+
+
+@media only screen and (max-width: 1000px){
+
+    .SearchForm{
+    
+        display: flex;
+        justify-content:center;
+        flex-direction: column;
+        height:auto;
+        width: 80vw;
+        border-style: solid;
+        border-radius: 2%;
+        color: white;
+        padding: 4%;
+        margin-top: 1%;
+    }
+    
 }
