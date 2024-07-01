@@ -1,5 +1,5 @@
 **Capstone Project 2: Tourlifve**  
-live at [https://soft-slush.surge.sh/] (https://soft-slush.surge.sh/)
+live at [https://soft-slush.surge.sh/](https://soft-slush.surge.sh/)
 Github:  [backend](https://github.com/HapoGit89/Tourlifve_backend.git)  [frontend](https://github.com/HapoGit89/Tourlifve_frontend.git)
 
 This web app is called Tourlifve and wants to help frequent travellers by letting them custom search for interesting places nearby their stays.
